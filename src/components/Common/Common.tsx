@@ -6,6 +6,9 @@ export const SightName = styled.span<{ color?: string }>`
   font-weight: 600;
   font-size: 16px;
   color: ${props => (props.color ? getSightColor(props.color as SightColor) : '#000')};
+  & > * {
+    color: ${props => (props.color ? getSightColor(props.color as SightColor) : '#000')};
+  }
 `;
 
 export const AdditionalInfo = styled.span<{ isSingle?: boolean }>`
@@ -16,7 +19,7 @@ export const AdditionalInfo = styled.span<{ isSingle?: boolean }>`
   padding-left: ${p => (p.isSingle ? 0 : '12px')};
   &:before {
     position: absolute;
-    top: 12px;
+    top: 10px;
     left: 0;
     content: '';
     display: ${p => (p.isSingle ? 'none' : 'block')};

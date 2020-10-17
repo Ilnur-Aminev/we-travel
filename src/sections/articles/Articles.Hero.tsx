@@ -8,6 +8,7 @@ import mediaqueries from '../../styles/media';
 import { IAuthor } from '../../types';
 
 import { GridLayoutContext } from './Articles.List.Context';
+import { Regions } from '../../components/Regions';
 
 const authorQuery = graphql`
   {
@@ -26,10 +27,8 @@ const authorQuery = graphql`
   }
 `;
 
-const ArticlesHero: React.FC<{authors: IAuthor[]}> = ({ authors }) => {
-  const { gridLayout = 'tiles', hasSetGridLayout, setGridLayout } = useContext(
-    GridLayoutContext,
-  );
+const ArticlesHero: React.FC<{ authors: IAuthor[] }> = ({ authors }) => {
+  const { gridLayout = 'tiles', hasSetGridLayout, setGridLayout } = useContext(GridLayoutContext);
 
   const results = useStaticQuery(authorQuery);
   const hero = results.site.edges[0].node.siteMetadata.hero;
@@ -41,6 +40,7 @@ const ArticlesHero: React.FC<{authors: IAuthor[]}> = ({ authors }) => {
         <HeroHeading dangerouslySetInnerHTML={{ __html: hero.heading }} />
       </HeadingContainer>
       <SubheadingContainer>
+        <Regions authors={authors} />
         <GridControlsContainer>
           <GridButton
             onClick={() => setGridLayout('tiles')}
@@ -70,7 +70,7 @@ export default ArticlesHero;
 
 const SubheadingContainer = styled.div`
   display: flex;
-  align-items: center;
+  align-items: space-between;
   margin-bottom: 100px;
 
   ${mediaqueries.desktop`
