@@ -240,16 +240,16 @@ const Frame = styled.nav`
 
   ${mediaqueries.tablet`
     .Paginator__pageLink, ${Spacer} { display: none; }
-    left: -15px;
+      left: -15px;
   `}
 
   ${mediaqueries.phablet`
-  .Paginator__pageLink, ${Spacer} { display: none; }
-  left: unset;
-`}
+    .Paginator__pageLink, ${Spacer} { display: none; }
+      left: unset;
+  `}
 
   ${mediaqueries.desktop_up`
     justify-content: flex-start;
-    ${MobileReference} { display: none; }
+      ${MobileReference} { display: none; }
   `}
 `;

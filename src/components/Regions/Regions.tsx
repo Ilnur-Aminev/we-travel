@@ -8,7 +8,7 @@ export const Regions: React.FC<{ authors: IAuthor[] }> = ({ authors }) => {
   return (
     <Wrapper>
       {authors.map(a => (
-        <AuthorLink color={a.color}>
+        <AuthorLink color={a.color} key={a.name}>
           <Link to={a.slug} key={a.name}>
             {a.name}
           </Link>
@@ -28,10 +28,9 @@ const AuthorLink = styled(SightName)`
   font-weight: 700;
   margin-right: 15px;
 
-  &:not(:first-child):before {
+  &:not(:first-of-type):before {
     content: '·';
     color: rgba(8, 8, 11, 0.15);
-    vertical-align: text-bottom;
     margin-right: 15px;
   }
 `;
