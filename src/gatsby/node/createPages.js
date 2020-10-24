@@ -202,6 +202,8 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
         id: article.id,
         title: article.title,
         type: article.type,
+        seoDescription: article.seoDescription,
+        seoTitle: article.seoTitle,
         canonicalUrl: article.canonical_url,
         next
       }

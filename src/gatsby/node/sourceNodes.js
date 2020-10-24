@@ -12,6 +12,8 @@ module.exports = ({ actions }) => {
       timeToRead: Int
       canonical_url: String
       type: String
+      seoDescription: String
+      seoTitle: String
     }
   `);
 };

@@ -44,6 +44,8 @@ export interface IArticle {
   slug: string;
   author: string;
   title: string;
+  seoTitle?: string;
+  seoDescription?: string;
   excerpt: string;
   type: string;
   body: string;
