@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import styled from "@emotion/styled";
-import { css } from "@emotion/core";
-import { Link } from "gatsby";
-import { Helmet } from "react-helmet";
+import React, { Component } from 'react';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
+import { Link } from 'gatsby';
+import { Helmet } from 'react-helmet';
 
-import mediaqueries from "../../styles/media";
-import { range } from "../../utils";
+import mediaqueries from '../../styles/media';
+import { range } from '../../utils';
 
-import { IPaginator } from "../../types";
+import { IPaginator } from '../../types';
 
 /**
  * <Paginator />
@@ -26,14 +26,7 @@ class Paginator extends Component<IPaginator, {}> {
   count = this.props.pageCount;
   current = this.props.index;
   pageRoot = this.props.pathPrefix;
-
-  get nextPath() {
-    return this.getFullPath(this.current + 1);
-  }
-
-  get previousPath() {
-    return this.getFullPath(this.current - 1);
-  }
+  siteUrl = this.props.siteUrl || '';
 
   /**
    * Utility function to return a 1 ... 5 6 7 ... 10 style pagination
@@ -72,11 +65,7 @@ class Paginator extends Component<IPaginator, {}> {
     // the pagination will end up looking a bit short (e.g. on 8 pages ... 7, 8)
     // Push to the end an extra page maxPages from the end
     if (pagesRange[0] + 1 === count && pagesRange[0] - 1 > 0) {
-      truncatedRange.splice(
-        pagesRange.length - 1 - maxPages,
-        0,
-        pagesRange[0] - 1,
-      );
+      truncatedRange.splice(pagesRange.length - 1 - maxPages, 0, pagesRange[0] - 1);
     }
 
     // We might need a spacer at the end of the pagination e.g. 4 5 6 ... 8
@@ -104,7 +93,7 @@ class Paginator extends Component<IPaginator, {}> {
         >
           {page}
         </PageNumberBUtton>
-      ),
+      )
     );
   }
 
@@ -113,12 +102,21 @@ class Paginator extends Component<IPaginator, {}> {
    * All it really does is glue the page path to the front,
    * but note there's special behaviour for page 1 where the URL should be / not /page/1
    */
-  getFullPath = (n: number) => {
-    if (this.pageRoot === "/") {
-      return n === 1 ? this.pageRoot : this.pageRoot + "page/" + n;
+  getFullPath = (n: number, isAbsolute: boolean = false) => {
+    const prefix = isAbsolute ? this.siteUrl : '';
+    if (this.pageRoot === '/') {
+      return prefix + (n === 1 ? this.pageRoot : this.pageRoot + 'page/' + n);
     } else {
-      return n === 1 ? this.pageRoot : this.pageRoot + "/page/" + n;
+      return prefix + (n === 1 ? this.pageRoot : this.pageRoot + '/page/' + n);
     }
+  };
+
+  nextPath = (isAbsolute: boolean = false) => {
+    return this.getFullPath(this.current + 1, isAbsolute);
+  };
+
+  previousPath = (isAbsolute: boolean = false) => {
+    return this.getFullPath(this.current - 1, isAbsolute);
   };
 
   render() {
@@ -126,25 +124,23 @@ class Paginator extends Component<IPaginator, {}> {
     const current = this.current;
 
     if (count <= 1) return null;
-
-    const previousPath = this.previousPath;
-    const nextPath = this.nextPath;
     const hasNext = this.current < this.count;
     const hasPrevious = this.current > 1;
 
     return (
       <>
         <Helmet>
-          {hasPrevious && <link rel="prev" href={previousPath} />}
-          {hasNext && <link rel="next" href={nextPath} />}
+          {hasPrevious && <link rel="prev" href={this.previousPath(true)} />}
+          {hasPrevious && <link rel="canonical" href={this.siteUrl} />}
+          {hasNext && <link rel="next" href={this.nextPath(true)} />}
         </Helmet>
         <Frame>
-          {hasPrevious && <PageButton to={previousPath}>Предыдущая</PageButton>}
+          {hasPrevious && <PageButton to={this.previousPath()}>Предыдущая</PageButton>}
           {this.getPageLinks}
           <MobileReference aria-hidden="true">
             <em>{current}</em>&nbsp;of {count}
           </MobileReference>
-          {hasNext && <PageButton to={nextPath}>Следующая</PageButton>}
+          {hasNext && <PageButton to={this.nextPath()}>Следующая</PageButton>}
         </Frame>
       </>
     );
@@ -212,7 +208,7 @@ const Spacer = styled.span`
   opacity: 0.3;
   ${paginationItemMixin}
   &::before {
-    content: "...";
+    content: '...';
   }
 `;
 

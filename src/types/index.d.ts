@@ -4,6 +4,7 @@ export interface IPaginator {
   pageCount: number;
   index: number;
   pathPrefix: string;
+  siteUrl?: string
 }
 
 interface IGatsbyImage {
