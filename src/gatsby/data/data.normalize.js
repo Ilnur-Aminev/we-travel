@@ -12,7 +12,7 @@ function normalizeHero(article) {
     full: {},
     regular: {},
     narrow: {},
-    seo: {},
+    seo: {}
   };
 
   if (article.hero) {
@@ -20,7 +20,7 @@ function normalizeHero(article) {
       full: article.hero.full.fluid,
       regular: article.hero.regular.fluid,
       narrow: article.hero.narrow.fluid,
-      seo: article.hero.seo.fixed,
+      seo: article.hero.seo.fixed
     };
   } else {
     console.log('\u001B[33m', `Missing hero for "${article.title}"`);
@@ -33,14 +33,14 @@ function normalizeAvatar(author) {
   let avatar = {
     small: {},
     medium: {},
-    large: {},
+    large: {}
   };
 
   if (author.avatar) {
     avatar = {
       small: author.avatar.small.fluid,
       medium: author.avatar.medium.fluid,
-      large: author.avatar.large.fluid,
+      large: author.avatar.large.fluid
     };
   } else {
     console.log('\u001B[33m', `Missing avatar for "${author.name}"`);
@@ -49,43 +49,17 @@ function normalizeAvatar(author) {
   return avatar;
 }
 
-module.exports.local = {
+module.exports = {
   articles: ({ node: article }) => {
     return {
       ...article,
-      hero: normalizeHero(article),
+      hero: normalizeHero(article)
     };
   },
   authors: ({ node: author }) => {
     return {
       ...author,
-      avatar: normalizeAvatar(author),
+      avatar: normalizeAvatar(author)
     };
-  },
-};
-
-module.exports.contentful = {
-  articles: ({ node: article }) => {
-    const author = article.author.reduce((curr, next, index, array) => {
-      if (array.length === 1) {
-        return next.name;
-      }
-
-      return `${curr + next.name}, `;
-    }, ``);
-
-    return {
-      ...article,
-      author,
-      body: article.body.childMdx.body,
-      timeToRead: article.body.childMdx.timeToRead,
-    };
-  },
-  authors: ({ node: author }) => {
-    return {
-      ...author,
-      slug: author.fields.slug,
-      authorsPage: author.fields.authorsPage,
-    };
-  },
+  }
 };
