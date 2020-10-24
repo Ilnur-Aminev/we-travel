@@ -25,7 +25,7 @@ const Section = styled.section<{ narrow?: boolean }>`
 
   ${mediaqueries.phablet`
     max-width: 100%;
-    padding: 0 2em;
+    padding: 0 20px;
   `};
 `;
 

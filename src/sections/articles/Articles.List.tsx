@@ -91,7 +91,7 @@ const ListItem: React.FC<ArticlesListItemProps> = ({ article, narrow, authors })
         <ImageContainer narrow={narrow} gridLayout={gridLayout}>
           {hasHeroImage ? <Image src={imageSource} /> : <ImagePlaceholder />}
         </ImageContainer>
-        <div>
+        <CardContent>
           <Title dark hasOverflow={hasOverflow} gridLayout={gridLayout}>
             {article.title}
           </Title>
@@ -107,7 +107,7 @@ const ListItem: React.FC<ArticlesListItemProps> = ({ article, narrow, authors })
             )}
             <AdditionalInfo isSingle={!authorInfo}>{article.type}</AdditionalInfo>
           </MetaData>
-        </div>
+        </CardContent>
       </Item>
     </ArticleLink>
   );
@@ -279,8 +279,8 @@ const Title = styled(Headings.h2)`
 
   ${mediaqueries.phablet`
     font-size: 22px;  
-    padding: 30px 20px 0;
-    margin-bottom: 10px;
+    padding: 0;
+    margin-bottom: 8px;
     -webkit-line-clamp: 3;
   `}
 `;
@@ -302,13 +302,9 @@ const Excerpt = styled.p<{
   `}
 
   ${mediaqueries.phablet`
-    margin-bottom; 15px;
-  `}
-
-  ${mediaqueries.phablet`
     max-width: 100%;
-    padding:  0 20px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+    padding: 0;
     -webkit-line-clamp: 3;
   `}
 `;
@@ -320,7 +316,7 @@ const MetaData = styled.div`
 
   ${mediaqueries.phablet`
     max-width: 100%;
-    padding:  0 20px 30px;
+    padding: 0;
   `}
 `;
 
@@ -367,5 +363,11 @@ const ArticleLink = styled(Link)`
     &:active {
       transform: scale(0.97) translateY(3px);
     }
+  `}
+`;
+
+const CardContent = styled.div`
+  ${mediaqueries.phablet`
+    padding: 16px;
   `}
 `;

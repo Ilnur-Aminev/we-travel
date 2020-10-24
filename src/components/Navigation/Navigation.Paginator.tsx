@@ -158,7 +158,6 @@ const paginationItemMixin = p => css`
   color: ${p.theme.colors.primary};
   padding: 0;
   width: 6.8rem;
-  height: 6.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -167,7 +166,6 @@ const paginationItemMixin = p => css`
   ${mediaqueries.desktop_up`
     display: block;
     width: auto;
-    height: auto;
     padding: 2rem;
 
     &:first-of-type {
@@ -241,11 +239,6 @@ const Frame = styled.nav`
   ${mediaqueries.tablet`
     .Paginator__pageLink, ${Spacer} { display: none; }
       left: -15px;
-  `}
-
-  ${mediaqueries.phablet`
-    .Paginator__pageLink, ${Spacer} { display: none; }
-      left: unset;
   `}
 
   ${mediaqueries.desktop_up`

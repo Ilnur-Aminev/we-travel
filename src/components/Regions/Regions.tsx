@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import React from 'react';
+import mediaqueries from '../../styles/media';
 import { IAuthor } from '../../types';
 import { SightName } from '../Common/Common';
 
@@ -33,4 +34,8 @@ const AuthorLink = styled(SightName)`
     color: rgba(8, 8, 11, 0.15);
     margin-right: 15px;
   }
+
+  ${mediaqueries.phablet`
+    font-size: 18px;
+  `}
 `;

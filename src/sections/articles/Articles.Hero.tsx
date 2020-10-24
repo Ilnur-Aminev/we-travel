@@ -82,7 +82,7 @@ const SubheadingContainer = styled.div`
   `};
 
   ${mediaqueries.phablet`
-    display: none;
+    margin-bottom: 30px;
   `};
 `;
 
@@ -129,7 +129,7 @@ const HeroHeading = styled.h1`
   `}
 
   ${mediaqueries.phone`
-    font-size: 18px;
+    font-size: 20px;
   `}
 `;
 
