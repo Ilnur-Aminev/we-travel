@@ -1,11 +1,7 @@
 /* eslint-disable no-console, import/no-extraneous-dependencies, prefer-const, no-shadow */
-
-require('dotenv').config();
-
-const log = (message, section) => console.log(`\n\u001B[36m${message} \u001B[4m${section}\u001B[0m\u001B[0m\n`);
-
 const path = require('path');
 const createPaginatedPages = require('gatsby-paginate');
+require('dotenv').config();
 
 const templatesDirectory = path.resolve(__dirname, '../../templates');
 const templates = {
@@ -17,42 +13,9 @@ const templates = {
 const query = require('../data/data.query');
 const normalize = require('../data/data.normalize');
 
-// ///////////////// Utility functions ///////////////////
-
-function buildPaginatedPath(index, basePath) {
-  if (basePath === '/') {
-    return index > 1 ? `${basePath}page/${index}` : basePath;
-  }
-  return index > 1 ? `${basePath}/page/${index}` : basePath;
-}
-
-function slugify(string, base) {
-  const slug = string
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036F]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)+/g, '');
-
-  return `${base}/${slug}`.replace(/\/\/+/g, '/');
-}
-
-function getUniqueListBy(array, key) {
-  return [...new Map(array.map(item => [item[key], item])).values()];
-}
-
-const byDate = (a, b) => new Date(b.dateForSEO) - new Date(a.dateForSEO);
-
-// ///////////////////////////////////////////////////////
-
 module.exports = async ({ actions: { createPage }, graphql }) => {
-  const rootPath = '/';
-  const basePath = '/';
-  const authorsPath = '/places';
-  const authorsPage = true;
   const pageLength = 6;
-  const local = true;
-  const contentful = false;
+  const basePath = '/';
 
   const { data } = await graphql(`
     query siteQuery {
@@ -63,71 +26,31 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
       }
     }
   `);
- 
-  let authors;
-  let articles;
 
-  const dataSources = {
-    local: { authors: [], articles: [] },
-    contentful: { authors: [], articles: [] },
-    netlify: { authors: [], articles: [] }
+  const sourceData = {
+    authors: [],
+    articles: []
   };
 
-  if (rootPath) {
-    log('Config rootPath', rootPath);
-  } else {
-    log('Config rootPath not set, using basePath instead =>', basePath);
+  try {
+    log('Querying Authors & Articles source:', 'Local');
+    const localAuthors = await graphql(query.authors);
+    const localArticles = await graphql(query.articles);
+
+    sourceData.authors = localAuthors.data.authors.edges.map(normalize.authors);
+    sourceData.articles = localArticles.data.articles.edges.map(normalize.articles);
+  } catch (error) {
+    console.error(error);
   }
 
-  log('Config basePath', basePath);
-  if (authorsPage) log('Config authorsPath', authorsPath);
-
-  if (local) {
-    try {
-      log('Querying Authors & Articles source:', 'Local');
-      const localAuthors = await graphql(query.local.authors);
-      const localArticles = await graphql(query.local.articles);
-
-      dataSources.local.authors = localAuthors.data.authors.edges.map(normalize.local.authors);
-
-      dataSources.local.articles = localArticles.data.articles.edges.map(normalize.local.articles);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  if (contentful) {
-    try {
-      log('Querying Authors & Articles source:', 'Contentful');
-      const contentfulAuthors = await graphql(query.contentful.authors);
-      const contentfulArticles = await graphql(query.contentful.articles);
-
-      dataSources.contentful.authors = contentfulAuthors.data.authors.edges.map(normalize.contentful.authors);
-
-      dataSources.contentful.articles = contentfulArticles.data.articles.edges.map(normalize.contentful.articles);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  // Combining together all the articles from different sources
-  articles = [...dataSources.local.articles, ...dataSources.contentful.articles, ...dataSources.netlify.articles].sort(
-    byDate
-  );
+  const articles = sourceData.articles.sort(byDate);
+  const authors = getUniqueListBy(sourceData.authors, 'name');
 
   const articlesThatArentSecret = articles.filter(article => !article.secret);
 
-  // Combining together all the authors from different sources
-  authors = getUniqueListBy(
-    [...dataSources.local.authors, ...dataSources.contentful.authors, ...dataSources.netlify.authors],
-    'name'
-  );
-
   if (articles.length === 0 || authors.length === 0) {
     throw new Error(`
-    You must have at least one Author and Post. As reference you can view the
-    example repository. Look at the content folder in the example repo.
-    https://github.com/narative/gatsby-theme-novela-example
+    You must have at least one Author and Post.
   `);
   }
 
@@ -202,39 +125,66 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
         id: article.id,
         title: article.title,
         type: article.type,
+        seoDescription: article.seoDescription,
+        seoTitle: article.seoTitle,
         canonicalUrl: article.canonical_url,
         next
       }
     });
   });
 
-  /**
-   * By default the author's page is not enabled. This can be enabled through the theme options.
-   * If enabled, each author will get their own page and a list of the articles they have written.
-   */
-  if (authorsPage) {
-    log('Creating', 'authors page');
+  log('Creating', 'authors page');
 
-    authors.forEach(author => {
-      const articlesTheAuthorHasWritten = articlesThatArentSecret.filter(article =>
-        article.author.toLowerCase().includes(author.name.toLowerCase())
-      );
-      const path = slugify(author.slug, 'places');
+  authors.forEach(author => {
+    const articlesTheAuthorHasWritten = articlesThatArentSecret.filter(article =>
+      article.author.toLowerCase().includes(author.name.toLowerCase())
+    );
+    const path = slugify(author.slug, 'places');
 
-      createPaginatedPages({
-        edges: articlesTheAuthorHasWritten,
-        pathPrefix: author.slug,
-        createPage,
-        pageLength,
-        pageTemplate: templates.author,
-        buildPath: buildPaginatedPath,
-        context: {
-          author,
-          originalPath: path,
-          skip: pageLength,
-          limit: pageLength
-        }
-      });
+    createPaginatedPages({
+      edges: articlesTheAuthorHasWritten,
+      pathPrefix: author.slug,
+      createPage,
+      pageLength,
+      pageTemplate: templates.author,
+      buildPath: buildPaginatedPath,
+      context: {
+        author,
+        originalPath: path,
+        skip: pageLength,
+        limit: pageLength
+      }
     });
-  }
+  });
 };
+
+// ///////////////// Utility functions ///////////////////
+
+function buildPaginatedPath(index, basePath) {
+  return index > 1 ? `${basePath}page/${index}` : basePath;
+}
+
+function slugify(string, base) {
+  const slug = string
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036F]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)+/g, '');
+
+  return `${base}/${slug}`.replace(/\/\/+/g, '/');
+}
+
+function getUniqueListBy(array, key) {
+  return [...new Map(array.map(item => [item[key], item])).values()];
+}
+
+function byDate(a, b) {
+  return new Date(b.dateForSEO) - new Date(a.dateForSEO);
+}
+
+// ///////////////////////////////////////////////////////
+
+function log(message, section) {
+  console.log(`\n\u001B[36m${message} \u001B[4m${section}\u001B[0m\u001B[0m\n`);
+}

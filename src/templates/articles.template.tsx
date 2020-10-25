@@ -1,17 +1,34 @@
-import React from "react";
-import styled from "@emotion/styled";
+import React from 'react';
+import styled from '@emotion/styled';
 
-import Section from "../components/Section";
-import SEO from "../components/SEO";
-import Layout from "../components/Layout";
-import Paginator from "../components/Navigation/Navigation.Paginator";
+import Section from '../components/Section';
+import SEO from '../components/SEO';
+import Layout from '../components/Layout';
+import { Paginator } from '../components/Navigation/Navigation.Paginator';
 
-import ArticlesHero from "../sections/articles/Articles.Hero";
-import ArticlesList from "../sections/articles/Articles.List"
-import { ArticlesTemplate } from "../types";
 import mediaqueries from "../styles/media";
+import ArticlesHero from '../sections/articles/Articles.Hero';
+import ArticlesList from '../sections/articles/Articles.List';
+import { ArticlesTemplate } from '../types';
+import { graphql, useStaticQuery } from 'gatsby';
+
+const query = graphql`
+  {
+    allSite {
+      edges {
+        node {
+          siteMetadata {
+            siteUrl
+          }
+        }
+      }
+    }
+  }
+`;
 
 const ArticlesPage: ArticlesTemplate = ({ location, pageContext }) => {
+  const results = useStaticQuery(query);
+  const { siteUrl } = results.allSite.edges[0].node.siteMetadata;
   const articles = pageContext.group;
   const authors = pageContext.additionalContext.authors;
 
@@ -20,9 +37,9 @@ const ArticlesPage: ArticlesTemplate = ({ location, pageContext }) => {
       <SEO pathname={location.pathname} />
       <ArticlesHero authors={authors} />
       <Section narrow>
-        <ArticlesList articles={articles} authors={authors}/>
+        <ArticlesList articles={articles} authors={authors} />
         <ArticlesPaginator show={pageContext.pageCount > 1}>
-          <Paginator {...pageContext} />
+          <Paginator {...pageContext} siteUrl={siteUrl} />
         </ArticlesPaginator>
       </Section>
       <ArticlesGradient />

@@ -26,6 +26,7 @@ module.exports = {
     `gatsby-plugin-netlify-cms`,
     `gatsby-plugin-cname`,
     `gatsby-plugin-sitemap`,
+    `gatsby-plugin-force-trailing-slashes`,
     {
       resolve: `gatsby-plugin-yandex-metrika`,
       options: {

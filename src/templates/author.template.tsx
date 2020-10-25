@@ -1,38 +1,51 @@
-import React from "react";
-import styled from "@emotion/styled";
+import React from 'react';
+import styled from '@emotion/styled';
 
-import Section from "../components/Section";
-import SEO from "../components/SEO";
-import Layout from "../components/Layout";
-import Paginator from "../components/Navigation/Navigation.Paginator";
+import Section from '../components/Section';
+import SEO from '../components/SEO';
+import Layout from '../components/Layout';
+import { Paginator } from '../components/Navigation/Navigation.Paginator';
 
-import AuthorHero from "../sections/author/Author.Hero";
-import AuthorArticles from "../sections/author/Author.Articles";
+import AuthorHero from '../sections/author/Author.Hero';
+import AuthorArticles from '../sections/author/Author.Articles';
+import { graphql, useStaticQuery } from 'gatsby';
 
 // todo Types
 
+const query = graphql`
+  {
+    allSite {
+      edges {
+        node {
+          siteMetadata {
+            siteUrl
+          }
+        }
+      }
+    }
+  }
+`;
+
 const ArticlesPage: any = ({ location, pageContext }) => {
+  const results = useStaticQuery(query);
+  const { siteUrl } = results.allSite.edges[0].node.siteMetadata;
   const author = pageContext.additionalContext.author;
   const articles = pageContext.group;
 
   return (
     <Layout>
-      <SEO
-        pathname={location.pathname}
-        title={author.name}
-        description={author.bio}
-      />
+      <SEO pathname={location.pathname} title={author.name} description={author.bio} />
       <Section narrow>
         <AuthorHero author={author} />
         <AuthorArticles articles={articles} />
         <AuthorPaginator>
-          <Paginator {...pageContext} />
+          <Paginator {...pageContext} siteUrl={siteUrl} />
         </AuthorPaginator>
       </Section>
       <AuthorsGradient />
     </Layout>
   );
-}
+};
 
 export default ArticlesPage;
 
