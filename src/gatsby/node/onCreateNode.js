@@ -10,7 +10,6 @@ module.exports = ({ node, actions, getNode, createNodeId }) => {
   const contentPath = 'content/posts';
   const basePath = '/';
   const articlePermalinkFormat = ':slug';
-  const authorsPage = true;
 
   // Create source field (according to contentPath)
   const fileNode = getNode(node.parent);
@@ -43,7 +42,7 @@ module.exports = ({ node, actions, getNode, createNodeId }) => {
   }
 
   function generateSlug(...arguments_) {
-    return `/${arguments_.join('/')}`.replace(/\/\/+/g, '/');
+    return `/${arguments_.join('/')}`.replace(/\/\/+/g, '/') + '/';
   }
 
   // ///////////////////////////////////////////////////////
@@ -57,7 +56,7 @@ module.exports = ({ node, actions, getNode, createNodeId }) => {
 
     const fieldData = {
       ...node,
-      authorsPage: authorsPage || false,
+      authorsPage: true,
       slug: generateSlug(basePath, 'places', slug)
     };
 

@@ -161,11 +161,7 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
 // ///////////////// Utility functions ///////////////////
 
 function buildPaginatedPath(index, basePath) {
-  if (basePath === '/') {
-    return index > 1 ? `${basePath}page/${index}` : basePath;
-  }
-
-  return index > 1 ? `${basePath}/page/${index}` : basePath;
+  return index > 1 ? `${basePath}page/${index}` : basePath;
 }
 
 function slugify(string, base) {

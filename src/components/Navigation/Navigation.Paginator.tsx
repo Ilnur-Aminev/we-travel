@@ -104,11 +104,7 @@ export class Paginator extends Component<IPaginator, {}> {
    */
   getFullPath = (n: number, isAbsolute: boolean = false) => {
     const prefix = isAbsolute ? this.siteUrl : '';
-    if (this.pageRoot === '/') {
-      return prefix + (n === 1 ? this.pageRoot : this.pageRoot + 'page/' + n + '/');
-    } else {
-      return prefix + (n === 1 ? this.pageRoot : this.pageRoot + '/page/' + n + '/');
-    }
+    return prefix + (n === 1 ? this.pageRoot : this.pageRoot + 'page/' + n + '/');
   };
 
   nextPath = (isAbsolute: boolean = false) => {
