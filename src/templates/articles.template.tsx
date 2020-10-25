@@ -6,6 +6,7 @@ import SEO from '../components/SEO';
 import Layout from '../components/Layout';
 import { Paginator } from '../components/Navigation/Navigation.Paginator';
 
+import mediaqueries from "../styles/media";
 import ArticlesHero from '../sections/articles/Articles.Hero';
 import ArticlesList from '../sections/articles/Articles.List';
 import { ArticlesTemplate } from '../types';
@@ -61,5 +62,9 @@ const ArticlesGradient = styled.div`
 `;
 
 const ArticlesPaginator = styled.div<{ show: boolean }>`
-  ${p => p.show && `margin-top: 95px;`}
+  ${p => p.show && `margin-top: 90px;`}
+
+  ${p => p.show && mediaqueries.tablet`
+    margin-top: 16px;
+  `}
 `;

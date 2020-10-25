@@ -119,9 +119,9 @@ const NavContainer = styled.div`
     padding-top: 50px;
   `};
 
-  @media screen and (max-height: 800px) {
-    padding-top: 50px;
-  }
+  ${mediaqueries.tablet`
+    padding-top: 25px;
+  `};
 `;
 
 const LogoLink = styled(Link)<{ back: string }>`

@@ -148,7 +148,6 @@ const paginationItemMixin = p => css`
   color: ${p.theme.colors.primary};
   padding: 0;
   width: 6.8rem;
-  height: 6.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,7 +156,6 @@ const paginationItemMixin = p => css`
   ${mediaqueries.desktop_up`
     display: block;
     width: auto;
-    height: auto;
     padding: 2rem;
 
     &:first-of-type {
@@ -167,6 +165,10 @@ const paginationItemMixin = p => css`
     &:last-child {
       padding-right: 0;
     }
+  `}
+
+  ${mediaqueries.tablet`
+    margin-right: 20px;
   `}
 `;
 
@@ -226,11 +228,11 @@ const Frame = styled.nav`
 
   ${mediaqueries.tablet`
     .Paginator__pageLink, ${Spacer} { display: none; }
-    left: -15px;
+      left: -15px;
   `}
 
   ${mediaqueries.desktop_up`
     justify-content: flex-start;
-    ${MobileReference} { display: none; }
+      ${MobileReference} { display: none; }
   `}
 `;

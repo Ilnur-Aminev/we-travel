@@ -57,11 +57,13 @@ const GridItem: React.FC<GridItemProps> = ({ article, narrow }) => {
         <ImageContainer>
           <Image src={imageSource} />
         </ImageContainer>
-        <Title dark hasOverflow={hasOverflow}>
-          {article.title}
-        </Title>
-        <Excerpt hasOverflow={hasOverflow}>{article.excerpt}</Excerpt>
-        <AdditionalInfo isSingle={true}>{article.type}</AdditionalInfo>
+        <CardContent>
+          <Title dark hasOverflow={hasOverflow}>
+            {article.title}
+          </Title>
+          <Excerpt hasOverflow={hasOverflow}>{article.excerpt}</Excerpt>
+          <AdditionalInfo isSingle={true}>{article.type}</AdditionalInfo>
+        </CardContent>
       </Item>
     </ArticleLink>
   );
@@ -109,6 +111,12 @@ const Grid = styled.div<{ numberOfArticles: number }>`
 
   ${mediaqueries.tablet`
     grid-template-columns: 1fr;
+  `}
+`;
+
+const CardContent = styled.div`
+  ${mediaqueries.phablet`
+    padding: 20px;
   `}
 `;
 
@@ -163,7 +171,7 @@ const Title = styled(Headings.h3)`
     margin-bottom: 15px;
   `}
   ${mediaqueries.phablet`
-    padding: 30px 20px 0;
+    padding: 10px 0;
     margin-bottom: 10px;
     -webkit-line-clamp: 3;
   `}
@@ -187,7 +195,7 @@ const Excerpt = styled.p<{ narrow: boolean; hasOverflow: boolean }>`
 
   ${mediaqueries.phablet`
     max-width: 100%;
-    padding:  0 20px;
+    padding:  0;
     margin-bottom: 20px;
     -webkit-line-clamp: 3;
   `}

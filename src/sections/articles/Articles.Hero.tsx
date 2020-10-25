@@ -82,7 +82,7 @@ const SubheadingContainer = styled.div`
   `};
 
   ${mediaqueries.phablet`
-    display: none;
+    margin-bottom: 30px;
   `};
 `;
 
@@ -105,13 +105,14 @@ const HeadingContainer = styled.div`
 
   ${mediaqueries.tablet`
     width: 100%;
+    margin: 35px 0 30px;
   `}
 `;
 
 const HeroHeading = styled.h1`
   font-style: normal;
   font-weight: 800;
-  font-size: 72px;
+  font-size: 64px;
   line-height: 1.15;
   color: ${p => p.theme.colors.primary};
 
@@ -120,11 +121,15 @@ const HeroHeading = styled.h1`
   }
 
   ${mediaqueries.desktop`
-    font-size: 38px
+    font-size: 36px;
   `}
 
   ${mediaqueries.phablet`
-    font-size: 32px;
+    font-size: 24px;
+  `}
+
+  ${mediaqueries.phone`
+    font-size: 20px;
   `}
 `;
 

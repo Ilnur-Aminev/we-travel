@@ -50,11 +50,11 @@ const FooterContainer = styled.div`
 
   ${mediaqueries.tablet`
     flex-direction: column;
-    padding-bottom: 100px;
+    padding-bottom: 0;
   `}
 
   ${mediaqueries.phablet`
-    padding-bottom: 50px;
+    align-items: flex-start;
   `}
 `;
 
@@ -64,11 +64,7 @@ const HoritzontalRule = styled.div`
   border-bottom: 1px solid ${p => p.theme.colors.horizontalRule};
 
   ${mediaqueries.tablet`
-    margin: 60px auto;
-  `}
-
-  ${mediaqueries.phablet`
-    display: none;
+    margin: 56px auto 0;
   `}
 `;
 
@@ -77,8 +73,8 @@ const FooterText = styled.div`
     margin-bottom: 80px;
   `}
 
-  ${mediaqueries.phablet`
-    margin: 120px auto 100px;
+  ${mediaqueries.tablet`
+    margin: 24px 0;
   `}
 `;
 
