@@ -10,7 +10,7 @@ import mediaqueries from '../../styles/media';
 import { IArticle, IAuthor } from '../../types';
 
 import { GridLayoutContext } from './Articles.List.Context';
-import { AdditionalInfo, SightName } from '../../components/Common/Common';
+import { AdditionalInfo, Marker, SightName } from '../../components/Common/Common';
 
 /**
  * Tiles
@@ -102,9 +102,11 @@ const ListItem: React.FC<ArticlesListItemProps> = ({ article, narrow, authors })
             {authorInfo && (
               <>
                 <SightName color={authorInfo.color}>{article.author}</SightName>
+                <Marker />
                 <AdditionalInfo>{authorInfo.country}</AdditionalInfo>
               </>
             )}
+            <Marker />
             <AdditionalInfo isSingle={!authorInfo}>{article.type}</AdditionalInfo>
           </MetaData>
         </CardContent>
@@ -310,6 +312,9 @@ const Excerpt = styled.p<{
 `;
 
 const MetaData = styled.div`
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
   font-weight: 600;
   font-size: 16px;
   color: #000;

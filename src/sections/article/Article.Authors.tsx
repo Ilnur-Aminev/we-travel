@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 import Image from '../../components/Image';
 import mediaqueries from '../../styles/media';
 import { IAuthor } from '../../types';
-import { SightName, AdditionalInfo } from '../../components/Common/Common';
+import { SightName, Marker, AdditionalInfo } from '../../components/Common/Common';
 
 interface AuthorsProps {
   authors: IAuthor[];
@@ -25,7 +25,9 @@ const ArticleAuthors: React.FC<AuthorsProps> = ({ authors, sightType }) => {
         <RoundedImage src={authors[0]?.avatar.small} />
       </AuthorAvatar>
       <SightName color={authors[0]?.color}>{authors[0]?.name}</SightName>
+      <Marker />
       <AdditionalInfo>{authors[0]?.country}</AdditionalInfo>
+      <Marker />
       <AdditionalInfo>{sightType}</AdditionalInfo>
     </AuthorLink>
   );

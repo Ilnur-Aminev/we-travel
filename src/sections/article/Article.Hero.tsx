@@ -81,8 +81,8 @@ const Header = styled.header`
   `}
 
   ${mediaqueries.phablet`
-    margin: 85px auto;
-    padding: 0 40px;
+    margin: 35px auto 24px;
+    padding: 0 20px;
   `}
 
   @media screen and (max-height: 700px) {

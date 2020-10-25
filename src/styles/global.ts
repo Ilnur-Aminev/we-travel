@@ -73,6 +73,7 @@ export const globalStyles = css`
   img,
   svg,
   video {
+    max-width: 100%;
     vertical-align: middle;
     align-self: center;
   }
