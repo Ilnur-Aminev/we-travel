@@ -21,7 +21,7 @@ import { IPaginator } from '../../types';
  * Receives the gatsby-paginator props
  */
 
-class Paginator extends Component<IPaginator, {}> {
+export class Paginator extends Component<IPaginator, {}> {
   maxPages = 3;
   count = this.props.pageCount;
   current = this.props.index;
@@ -105,9 +105,9 @@ class Paginator extends Component<IPaginator, {}> {
   getFullPath = (n: number, isAbsolute: boolean = false) => {
     const prefix = isAbsolute ? this.siteUrl : '';
     if (this.pageRoot === '/') {
-      return prefix + (n === 1 ? this.pageRoot : this.pageRoot + 'page/' + n);
+      return prefix + (n === 1 ? this.pageRoot : this.pageRoot + 'page/' + n + '/');
     } else {
-      return prefix + (n === 1 ? this.pageRoot : this.pageRoot + '/page/' + n);
+      return prefix + (n === 1 ? this.pageRoot : this.pageRoot + '/page/' + n + '/');
     }
   };
 
@@ -131,7 +131,7 @@ class Paginator extends Component<IPaginator, {}> {
       <>
         <Helmet>
           {hasPrevious && <link rel="prev" href={this.previousPath(true)} />}
-          {hasPrevious && <link rel="canonical" href={this.siteUrl} />}
+          {hasPrevious && <link rel="canonical" href={this.getFullPath(1, true)} />}
           {hasNext && <link rel="next" href={this.nextPath(true)} />}
         </Helmet>
         <Frame>
@@ -146,8 +146,6 @@ class Paginator extends Component<IPaginator, {}> {
     );
   }
 }
-
-export default Paginator;
 
 const paginationItemMixin = p => css`
   line-height: 1;

@@ -6,7 +6,7 @@ const slugify = require('slugify');
 // Create fields for post slugs and source
 // This will change with schema customization with work
 module.exports = ({ node, actions, getNode, createNodeId }) => {
-  const { createNode, createNodeField, createParentChildLink } = actions;
+  const { createNode, createParentChildLink } = actions;
   const contentPath = 'content/posts';
   const basePath = '/';
   const articlePermalinkFormat = ':slug';
@@ -24,7 +24,7 @@ module.exports = ({ node, actions, getNode, createNodeId }) => {
       year,
       month,
       day,
-      slug,
+      slug
     };
 
     const permalink = articlePermalinkFormat.replace(/(:[a-z_]+)/g, match => {
@@ -52,13 +52,13 @@ module.exports = ({ node, actions, getNode, createNodeId }) => {
     const slug = node.slug
       ? `/${node.slug}`
       : slugify(node.name, {
-          lower: true,
+          lower: true
         });
 
     const fieldData = {
       ...node,
       authorsPage: authorsPage || false,
-      slug: generateSlug(basePath, 'places', slug),
+      slug: generateSlug(basePath, 'places', slug)
     };
 
     createNode({
@@ -74,8 +74,8 @@ module.exports = ({ node, actions, getNode, createNodeId }) => {
           .update(JSON.stringify(fieldData))
           .digest(`hex`),
         content: JSON.stringify(fieldData),
-        description: `Author`,
-      },
+        description: `Author`
+      }
     });
 
     createParentChildLink({ parent: fileNode, child: node });
@@ -93,14 +93,14 @@ module.exports = ({ node, actions, getNode, createNodeId }) => {
         basePath,
         generateArticlePermalink(
           slugify(node.frontmatter.slug || node.frontmatter.title, {
-            lower: true,
+            lower: true
           }),
-          node.frontmatter.date,
-        ),
+          node.frontmatter.date
+        )
       ),
       title: node.frontmatter.title,
       subscription: node.frontmatter.subscription !== false,
-      canonical_url: node.frontmatter.canonical_url,
+      canonical_url: node.frontmatter.canonical_url
     };
 
     createNode({
@@ -116,30 +116,10 @@ module.exports = ({ node, actions, getNode, createNodeId }) => {
           .update(JSON.stringify(fieldData))
           .digest(`hex`),
         content: JSON.stringify(fieldData),
-        description: `Article Posts`,
-      },
+        description: `Article Posts`
+      }
     });
 
     createParentChildLink({ parent: fileNode, child: node });
-  }
-
-  if (node.internal.type === `ContentfulAuthor`) {
-    createNodeField({
-      node,
-      name: `slug`,
-      value: generateSlug(
-        basePath,
-        'places',
-        slugify(node.name, {
-          lower: true,
-        }),
-      ),
-    });
-
-    createNodeField({
-      node,
-      name: `authorsPage`,
-      value: authorsPage || false,
-    });
   }
 };
