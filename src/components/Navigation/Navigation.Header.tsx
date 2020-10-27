@@ -4,7 +4,7 @@ import { Link, navigate } from 'gatsby';
 import { useColorMode } from 'theme-ui';
 
 import Section from '../Section/Section';
-import Logo from '../Logo';
+import { Logo } from '../Logo';
 
 import Icons from '../../icons';
 import { media as mediaqueries } from '../../styles';
