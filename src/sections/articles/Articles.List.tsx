@@ -102,12 +102,10 @@ const ListItem: React.FC<ArticlesListItemProps> = ({ article, narrow, authors })
             {authorInfo && (
               <>
                 <SightName color={authorInfo.color}>{article.author}</SightName>
-                <Marker />
                 <AdditionalInfo>{authorInfo.country}</AdditionalInfo>
               </>
             )}
-            {authorInfo && <Marker />}
-            <AdditionalInfo isSingle={!authorInfo}>{article.type}</AdditionalInfo>
+            <AdditionalInfo>{article.type}</AdditionalInfo>
           </MetaData>
         </CardContent>
       </Item>

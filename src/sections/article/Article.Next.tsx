@@ -62,7 +62,7 @@ const GridItem: React.FC<GridItemProps> = ({ article, narrow }) => {
             {article.title}
           </Title>
           <Excerpt hasOverflow={hasOverflow}>{article.excerpt}</Excerpt>
-          <AdditionalInfo isSingle={true}>{article.type}</AdditionalInfo>
+          <AdditionalInfo>{article.type}</AdditionalInfo>
         </CardContent>
       </Item>
     </ArticleLink>

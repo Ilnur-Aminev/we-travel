@@ -9,7 +9,7 @@ export function getSightColor(color: SightColor): string {
     case 'green':
       return '#6CA73F';
     case 'red':
-      return '#6CA73F';
+      return '#DB4569';
     default:
       return '#000';
   }
