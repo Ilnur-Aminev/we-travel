@@ -116,7 +116,7 @@ const Grid = styled.div<{ numberOfArticles: number }>`
 
 const CardContent = styled.div`
   ${mediaqueries.phablet`
-    padding: 20px;
+    padding: 16px;
   `}
 `;
 
@@ -171,7 +171,7 @@ const Title = styled(Headings.h3)`
     margin-bottom: 15px;
   `}
   ${mediaqueries.phablet`
-    padding: 10px 0;
+    padding: 0;
     margin-bottom: 10px;
     -webkit-line-clamp: 3;
   `}
