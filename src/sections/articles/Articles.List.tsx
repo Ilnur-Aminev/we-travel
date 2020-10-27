@@ -10,7 +10,7 @@ import mediaqueries from '../../styles/media';
 import { IArticle, IAuthor } from '../../types';
 
 import { GridLayoutContext } from './Articles.List.Context';
-import { AdditionalInfo, Marker, SightName } from '../../components/Common/Common';
+import { AdditionalInfo, SightName } from '../../components/Common/Common';
 
 /**
  * Tiles

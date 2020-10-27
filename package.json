@@ -8,7 +8,7 @@
     "build": "cross-env gatsby build ROBOTS_ENV=development",
     "dev": "gatsby develop",
     "clean": "gatsby clean",
-    "deploy": "cross-env ROBOTS_ENV=production gatsby build && gh-pages -d public -b master"
+    "deploy": "cross-env ROBOTS_ENV=production gatsby build && gh-pages -d public -b master --no-history"
   },
   "dependencies": {
     "@blocks/kit": "^0.0.28",
