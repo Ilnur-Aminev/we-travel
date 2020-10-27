@@ -17,16 +17,6 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
   const pageLength = 6;
   const basePath = '/';
 
-  const { data } = await graphql(`
-    query siteQuery {
-      site {
-        siteMetadata {
-          siteUrl
-        }
-      }
-    }
-  `);
-
   const sourceData = {
     authors: [],
     articles: []
@@ -46,8 +36,6 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
   const articles = sourceData.articles.sort(byDate);
   const authors = getUniqueListBy(sourceData.authors, 'name');
 
-  const articlesThatArentSecret = articles.filter(article => !article.secret);
-
   if (articles.length === 0 || authors.length === 0) {
     throw new Error(`
     You must have at least one Author and Post.
@@ -64,7 +52,7 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
    */
   log('Creating', 'articles page');
   createPaginatedPages({
-    edges: articlesThatArentSecret,
+    edges: articles,
     pathPrefix: basePath,
     createPage,
     pageLength,
@@ -83,44 +71,37 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
    * To do this, we need to find the corresponding authors since we allow for co-authors.
    */
   log('Creating', 'article posts');
+  const meta = await graphql(query.meta);
   articles.forEach((article, index) => {
-    // Match the Author to the one specified in the article
-    let authorsThatWroteTheArticle;
-    try {
-      authorsThatWroteTheArticle = authors.filter(author => {
-        const allAuthors = article.author.split(',').map(a => a.trim().toLowerCase());
-
-        return allAuthors.some(a => a === author.name.toLowerCase());
-      });
-    } catch (error) {
+    const author = authors.find(a => a.name.toLowerCase() === article.author.toLowerCase());
+    if (author == null) {
       throw new Error(`
-        We could not find the Author for: "${article.title}".
-        Double check the author field is specified in your post and the name
-        matches a specified author.
-        Provided author: ${article.author}
-        ${error}
-      `);
+      We could not find the Author for: "${article.title}".
+      Double check the author field is specified in your post and the name
+      matches a specified author.
+      Provided author: ${article.author}
+      ${error}
+    `);
     }
-
     /**
      * We need a way to find the next artiles to suggest at the bottom of the articles page.
      * To accomplish this there is some special logic surrounding what to show next.
      */
-    let next = articlesThatArentSecret.slice(index + 1, index + 3);
+    let next = articles.slice(index + 1, index + 3);
     // If it's the last item in the list, there will be no articles. So grab the first 2
-    if (next.length === 0) next = articlesThatArentSecret.slice(0, 2);
+    if (next.length === 0) next = articles.slice(0, 2);
     // If there's 1 item in the list, grab the first article
-    if (next.length === 1 && articlesThatArentSecret.length !== 2) next = [...next, articlesThatArentSecret[0]];
-    if (articlesThatArentSecret.length === 1) next = [];
+    if (next.length === 1 && articles.length !== 2) next = [...next, articles[0]];
+    if (articles.length === 1) next = [];
 
     createPage({
       path: article.slug,
       component: templates.article,
       context: {
         article,
-        authors: authorsThatWroteTheArticle,
+        author,
         basePath,
-        permalink: `${data.site.siteMetadata.siteUrl}${article.slug}/`,
+        permalink: `${meta.data.site.siteMetadata.siteUrl}${article.slug}/`,
         slug: article.slug,
         id: article.id,
         title: article.title,
@@ -136,8 +117,8 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
   log('Creating', 'authors page');
 
   authors.forEach(author => {
-    const articlesTheAuthorHasWritten = articlesThatArentSecret.filter(article =>
-      article.author.toLowerCase().includes(author.name.toLowerCase())
+    const articlesTheAuthorHasWritten = articles.filter(
+      article => article.author.toLowerCase() === author.name.toLowerCase()
     );
     const path = slugify(author.slug, 'places');
 

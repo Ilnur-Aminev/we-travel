@@ -11,10 +11,10 @@ import ArticleAuthors from './Article.Authors';
 
 interface ArticleHeroProps {
   article: IArticle;
-  authors: IAuthor[];
+  author: IAuthor;
 }
 
-const ArticleHero: React.FC<ArticleHeroProps> = ({ article, authors }) => {
+const ArticleHero: React.FC<ArticleHeroProps> = ({ article, author }) => {
   const hasHeroImage =
     article.hero && Object.keys(article.hero.full).length !== 0 && article.hero.full.constructor === Object;
 
@@ -22,7 +22,7 @@ const ArticleHero: React.FC<ArticleHeroProps> = ({ article, authors }) => {
     <Hero>
       <Header>
         <HeroHeading>{article.title}</HeroHeading>
-        <ArticleAuthors authors={authors} sightType={article.type}/>
+        <ArticleAuthors author={author} sightType={article.type}/>
       </Header>
       <HeroImage id="ArticleImage__Hero">
         {hasHeroImage ? <Image src={article.hero.full} /> : <ImagePlaceholder />}

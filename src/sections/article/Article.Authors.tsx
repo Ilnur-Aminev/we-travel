@@ -7,25 +7,21 @@ import { IAuthor } from '../../types';
 import { SightName, AdditionalInfo } from '../../components/Common/Common';
 
 interface AuthorsProps {
-  authors: IAuthor[];
+  author: IAuthor;
   sightType: string;
 }
 
-const ArticleAuthors: React.FC<AuthorsProps> = ({ authors, sightType }) => {
-  if (!authors || !authors[0]) {
+const ArticleAuthors: React.FC<AuthorsProps> = ({ author, sightType }) => {
+  if (author == null) {
     return null;
   }
-
-  const hasCoAuthors = authors.length > 1;
-  // Special dropdown UI for multiple authors
-
   return (
-    <AuthorLink as={authors[0]?.authorsPage ? Link : 'div'} to={authors[0]?.slug}>
+    <AuthorLink to={author.slug}>
       <AuthorAvatar>
-        <RoundedImage src={authors[0]?.avatar.small} />
+        <RoundedImage src={author.avatar.small} />
       </AuthorAvatar>
-      <SightName color={authors[0]?.color}>{authors[0]?.name}</SightName>
-      <AdditionalInfo>{authors[0]?.country}</AdditionalInfo>
+      <SightName color={author.color}>{author.name}</SightName>
+      <AdditionalInfo>{author.country}</AdditionalInfo>
       <AdditionalInfo>{sightType}</AdditionalInfo>
     </AuthorLink>
   );
@@ -55,7 +51,7 @@ const RoundedImage = styled(Image)`
   border-radius: 50%;
 `;
 
-const AuthorLink = styled.div`
+const AuthorLink = styled(Link)`
   display: flex;
   flex-wrap: wrap;
   align-items: center;

@@ -4,7 +4,7 @@ export interface IPaginator {
   pageCount: number;
   index: number;
   pathPrefix: string;
-  siteUrl?: string
+  siteUrl?: string;
 }
 
 interface IGatsbyImage {
@@ -27,7 +27,6 @@ interface IGatsbyImageFixed extends IGatsbyImage {
 }
 
 export interface IAuthor {
-  authorsPage?: boolean;
   featured?: boolean;
   name: string;
   slug: string;
@@ -35,9 +34,9 @@ export interface IAuthor {
   color: SightColor;
   country: string;
   avatar: {
-    image: IGatsbyImageFluid;
     large: IGatsbyImageFluid;
-    full: IGatsbyImageFluid;
+    medium: IGatsbyImageFluid;
+    small: IGatsbyImageFluid;
   };
 }
 
@@ -61,7 +60,6 @@ export interface IArticle {
   dateForSEO: string;
   timeToRead: number;
   date: string;
-  secret: boolean;
 }
 
 export interface IProgress {
@@ -89,7 +87,7 @@ export type ArticlesTemplate = React.FC<{
 
 export type ArticleTemplate = React.FC<{
   pageContext: {
-    authors: IAuthor[];
+    author: IAuthor;
     article: IArticle;
     next: IArticle[];
   };

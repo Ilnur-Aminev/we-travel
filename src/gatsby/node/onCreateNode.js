@@ -56,7 +56,6 @@ module.exports = ({ node, actions, getNode, createNodeId }) => {
 
     const fieldData = {
       ...node,
-      authorsPage: true,
       slug: generateSlug(basePath, 'places', slug)
     };
 
@@ -87,7 +86,6 @@ module.exports = ({ node, actions, getNode, createNodeId }) => {
       author: node.frontmatter.author,
       date: node.frontmatter.date,
       hero: node.frontmatter.hero,
-      secret: node.frontmatter.secret || false,
       slug: generateSlug(
         basePath,
         generateArticlePermalink(

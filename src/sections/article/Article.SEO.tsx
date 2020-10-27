@@ -22,18 +22,14 @@ const siteQuery = graphql`
 
 interface ArticleSEOProps {
   article: IArticle;
-  authors: IAuthor[];
+  author: IAuthor;
   location: Location;
   imagelocation?: string;
 }
 
-const ArticleSEO: React.FC<ArticleSEOProps> = ({ article, authors, location, imagelocation }) => {
+const ArticleSEO: React.FC<ArticleSEOProps> = ({ article, author: { name, slug, bio }, location, imagelocation }) => {
   const results = useStaticQuery(siteQuery);
   const siteUrl = results.allSite.edges[0].node.siteMetadata.siteUrl;
-
-  const authorsName = authors.map(author => author.name);
-  const authorsSlug = authors.map(author => author.slug);
-  const authorsBio = authors.map(author => author.bio);
 
   // Checks if the source of the image is hosted on Contentful
   if (`${article.hero.seo.src}`.includes('ctfassets')) {
@@ -44,9 +40,9 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({ article, authors, location, ima
 
   return (
     <SEO
-      authorName={authorsName}
-      authorsBio={authorsBio}
-      authorsSlug={authorsSlug}
+      authorName={name}
+      authorsBio={bio}
+      authorsSlug={slug}
       canonicalUrl={article.canonical_url}
       dateforSEO={article.dateForSEO}
       description={article.seoDescription || article.excerpt}
@@ -56,7 +52,6 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({ article, authors, location, ima
       published={article.date}
       timeToRead={article.timeToRead}
       title={article.seoTitle || article.title}
-      isSecret={article.secret}
       sightType={article.type as SightType}
     ></SEO>
   );

@@ -23,7 +23,7 @@ const Article: ArticleTemplate = ({ pageContext, location }) => {
 
   const [hasCalculated, setHasCalculated] = useState<boolean>(false);
   const [contentHeight, setContentHeight] = useState<number>(0);
-  const { article, authors, next } = pageContext;
+  const { article, author, next } = pageContext;
 
   useEffect(() => {
     const calculateBodySize = throttle(() => {
@@ -59,12 +59,10 @@ const Article: ArticleTemplate = ({ pageContext, location }) => {
     return () => window.removeEventListener('resize', calculateBodySize);
   }, []);
 
-  const authorName = authors[0]?.name ? authors[0].name + 'а' : '';
-
   return (
     <Layout>
-      <ArticleSEO article={article} authors={authors} location={location} />
-      <ArticleHero article={article} authors={authors} />
+      <ArticleSEO article={article} author={author} location={location} />
+      <ArticleHero article={article} author={author} />
       <ArticleAside contentHeight={contentHeight}>
         <Progress contentHeight={contentHeight} />
       </ArticleAside>
@@ -74,7 +72,7 @@ const Article: ArticleTemplate = ({ pageContext, location }) => {
       {next.length > 0 && (
         <NextArticle narrow>
           <FooterNext>
-            <FooterNextTitle>Другие достопримечательности {authorName}</FooterNextTitle>
+            <FooterNextTitle>Другие достопримечательности региона {author.name}</FooterNextTitle>
           </FooterNext>
           <ArticlesNext articles={next} />
           <FooterSpacer />
@@ -143,7 +141,7 @@ const FooterNext = styled.div`
 `;
 
 const FooterNextTitle = styled.span`
-  color: ${p => p.theme.colors.secondary}; 
+  color: ${p => p.theme.colors.secondary};
   font-weight: 700;
 `;
 

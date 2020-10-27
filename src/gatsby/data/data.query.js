@@ -22,7 +22,6 @@ module.exports = {
         node {
           id
           slug
-          secret
           title
           seoTitle
           seoDescription
@@ -65,7 +64,6 @@ module.exports = {
     authors: allAuthor {
       edges {
         node {
-          authorsPage
           bio
           id
           color
@@ -92,5 +90,14 @@ module.exports = {
         }
       }
     }
-  }`
+  }`,
+  meta: `
+    query siteQuery {
+      site {
+        siteMetadata {
+          siteUrl
+        }
+      }
+    }
+  `
 };

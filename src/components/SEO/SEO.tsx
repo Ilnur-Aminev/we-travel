@@ -38,7 +38,6 @@ interface HelmetProps {
   published?: string;
   timeToRead?: string;
   title: string;
-  isSecret: boolean;
   sightType: SightType;
 }
 
@@ -91,7 +90,6 @@ const SEO: React.FC<HelmetProps> = ({
   published,
   timeToRead,
   title,
-  isSecret,
   sightType
 }) => {
   const results = useStaticQuery(seoQuery);
