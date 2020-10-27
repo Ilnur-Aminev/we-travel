@@ -84,10 +84,6 @@ const Header = styled.header`
     margin: 35px auto 24px;
     padding: 0 20px;
   `}
-
-  @media screen and (max-height: 700px) {
-    margin: 100px auto;
-  }
 `;
 
 const HeroHeading = styled(Headings.h1)`
@@ -103,7 +99,7 @@ const HeroHeading = styled(Headings.h1)`
   `}
 
   ${mediaqueries.phablet`
-    font-size: 32px;
+    font-size: 26px;
   `}
 `;
 

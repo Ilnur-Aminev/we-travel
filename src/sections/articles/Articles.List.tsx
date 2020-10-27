@@ -106,7 +106,7 @@ const ListItem: React.FC<ArticlesListItemProps> = ({ article, narrow, authors })
                 <AdditionalInfo>{authorInfo.country}</AdditionalInfo>
               </>
             )}
-            <Marker />
+            {authorInfo && <Marker />}
             <AdditionalInfo isSingle={!authorInfo}>{article.type}</AdditionalInfo>
           </MetaData>
         </CardContent>

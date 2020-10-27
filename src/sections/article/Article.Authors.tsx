@@ -59,6 +59,7 @@ const RoundedImage = styled(Image)`
 
 const AuthorLink = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   color: inherit;
   font-weight: 700;

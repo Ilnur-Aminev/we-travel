@@ -3,6 +3,7 @@ import { getSightColor } from '../../helpers/helpers';
 import { SightColor } from '../../types';
 
 export const SightName = styled.span<{ color?: string }>`
+  margin: 4px 0;
   font-weight: 600;
   color: ${props => (props.color ? getSightColor(props.color as SightColor) : '#000')};
   & > * {

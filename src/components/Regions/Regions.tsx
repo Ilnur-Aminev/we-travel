@@ -24,6 +24,7 @@ export const Regions: React.FC<{ authors: IAuthor[] }> = ({ authors }) => {
 
 const Wrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
 `;
 

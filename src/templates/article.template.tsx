@@ -13,7 +13,6 @@ import { debounce } from '../utils';
 
 import ArticleAside from '../sections/article/Article.Aside';
 import ArticleHero from '../sections/article/Article.Hero';
-import ArticleControls from '../sections/article/Article.Controls';
 import ArticlesNext from '../sections/article/Article.Next';
 import ArticleSEO from '../sections/article/Article.SEO';
 
@@ -69,16 +68,13 @@ const Article: ArticleTemplate = ({ pageContext, location }) => {
       <ArticleAside contentHeight={contentHeight}>
         <Progress contentHeight={contentHeight} />
       </ArticleAside>
-      <MobileControls>
-        <ArticleControls />
-      </MobileControls>
       <ArticleBody ref={contentSectionRef}>
         <MDXRenderer content={article.body} />
       </ArticleBody>
       {next.length > 0 && (
         <NextArticle narrow>
           <FooterNext>
-            <span>Другие достопримечательности {authorName}</span>
+            <FooterNextTitle>Другие достопримечательности {authorName}</FooterNextTitle>
           </FooterNext>
           <ArticlesNext articles={next} />
           <FooterSpacer />
@@ -116,7 +112,7 @@ const ArticleBody = styled.article`
   `}
 
   ${mediaqueries.phablet`
-    padding: 60px 0;
+    padding: 60px 0 20px;
   `}
 `;
 
@@ -131,12 +127,8 @@ const FooterNext = styled.div`
   color: ${p => p.theme.colors.primary};
   display: flex;
 
-  & > span {
-    flex-shrink: 0;
-  }
-
   ${mediaqueries.tablet`
-    margin-bottom: 60px;
+    margin-bottom: 24px;
   `}
 
   &::after {
@@ -148,6 +140,11 @@ const FooterNext = styled.div`
     display: block;
     margin-left: 20px;
   }
+`;
+
+const FooterNextTitle = styled.span`
+  color: ${p => p.theme.colors.secondary}; 
+  font-weight: 700;
 `;
 
 const FooterSpacer = styled.div`

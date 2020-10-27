@@ -85,14 +85,14 @@ export class Paginator extends Component<IPaginator, {}> {
         <Spacer key={`PaginatorPage_spacer_${i}`} aria-hidden={true} />
       ) : (
         // Otherwise render a PageButton
-        <PageNumberBUtton
+        <PageNumberButton
           key={`PaginatorPage_${page}`}
           to={this.getFullPath(page)}
           style={{ opacity: current === page ? 1 : 0.3 }}
           className="Paginator__pageLink"
         >
           {page}
-        </PageNumberBUtton>
+        </PageNumberButton>
       )
     );
   }
@@ -131,12 +131,20 @@ export class Paginator extends Component<IPaginator, {}> {
           {hasNext && <link rel="next" href={this.nextPath(true)} />}
         </Helmet>
         <Frame>
-          {hasPrevious && <PageButton to={this.previousPath()}>Предыдущая</PageButton>}
+          {hasPrevious && <PageButton to={this.previousPath()}>Назад</PageButton>}
           {this.getPageLinks}
-          <MobileReference aria-hidden="true">
-            <em>{current}</em>&nbsp;of {count}
+          <MobileReference>
+            <PageNumberButton style={{ opacity: 1 }}>
+              {this.current}
+            </PageNumberButton>
+            {this.current + 2 <= this.count && <Spacer aria-hidden={true} />}
+            {this.current < this.count && (
+              <PageNumberButton to={this.getFullPath(this.count)} style={{ color: '#73737D' }}>
+                {this.count}
+              </PageNumberButton>
+            )}
           </MobileReference>
-          {hasNext && <PageButton to={this.nextPath()}>Следующая</PageButton>}
+          {hasNext && <PageButton to={this.nextPath()}>Вперед</PageButton>}
         </Frame>
       </>
     );
@@ -168,7 +176,8 @@ const paginationItemMixin = p => css`
   `}
 
   ${mediaqueries.tablet`
-    margin-right: 20px;
+    width: auto;
+    margin-right: 24px;
   `}
 `;
 
@@ -186,7 +195,7 @@ const PageButton = styled(Link)`
   }
 `;
 
-const PageNumberBUtton = styled(Link)`
+const PageNumberButton = styled(Link)`
   font-weight: 400;
   font-size: 18px;
   text-decoration: none;
@@ -206,17 +215,32 @@ const Spacer = styled.span`
   &::before {
     content: '...';
   }
+
+  ${mediaqueries.phablet`
+    display: none;
+`}
 `;
 
 const MobileReference = styled.span`
   font-weight: 400;
   ${paginationItemMixin}
+  display: none;
   color: ${p => p.theme.colors.primary};
 
   em {
     font-style: normal;
     color: ${p => p.theme.colors.primary};
   }
+
+  ${Spacer} {
+    display: block;
+    opacity: 1;
+  }
+
+  ${mediaqueries.phablet`
+    display: flex;
+    margin-right: 0;
+  `}
 `;
 
 const Frame = styled.nav`
@@ -226,13 +250,20 @@ const Frame = styled.nav`
   justify-content: space-between;
   align-items: center;
 
-  ${mediaqueries.tablet`
-    .Paginator__pageLink, ${Spacer} { display: none; }
-      left: -15px;
-  `}
-
   ${mediaqueries.desktop_up`
     justify-content: flex-start;
       ${MobileReference} { display: none; }
+  `}
+
+  ${mediaqueries.tablet`
+    .Paginator__pageLink {
+      left: -15px;
+    }
+  `}
+
+  ${mediaqueries.phablet`
+    .Paginator__pageLink {
+      display: none;
+    }
   `}
 `;
