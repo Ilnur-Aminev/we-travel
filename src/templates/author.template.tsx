@@ -7,7 +7,7 @@ import Layout from '../components/Layout';
 import { Paginator } from '../components/Navigation/Navigation.Paginator';
 
 import AuthorHero from '../sections/author/Author.Hero';
-import AuthorArticles from '../sections/author/Author.Articles';
+import { AuthorArticles } from '../sections/author/Author.Articles';
 import { graphql, useStaticQuery } from 'gatsby';
 
 // todo Types

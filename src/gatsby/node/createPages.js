@@ -33,8 +33,26 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
     console.error(error);
   }
 
-  const articles = sourceData.articles.sort(byDate);
   const authors = getUniqueListBy(sourceData.authors, 'name');
+  const articles = sourceData.articles.sort(byDate).map(article => {
+    const articleAuthor = authors.find(author => author.name.toLowerCase() === article.author.toLowerCase());
+    if (articleAuthor == null) {
+      throw new Error(`
+      We could not find the Author for: "${article.title}".
+      Double check the author field is specified in your post and the name
+      matches a specified author.
+      Provided author: ${article.author}
+      ${error}
+    `);
+    }
+    article.slug = `${articleAuthor.slug}${article.slug}/`;
+    article.author = { ...articleAuthor, slug: `${articleAuthor.slug}/` };
+    return article;
+  });
+
+  authors.forEach(author => {
+    author.slug += '/';
+  });
 
   if (articles.length === 0 || authors.length === 0) {
     throw new Error(`
@@ -42,15 +60,8 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
   `);
   }
 
-  /**
-   * Once we've queried all our data sources and normalized them to the same structure
-   * we can begin creating our pages. First, we'll want to create all main articles pages
-   * that have pagination.
-   * /articles
-   * /articles/page/1
-   * ...
-   */
   log('Creating', 'articles page');
+
   createPaginatedPages({
     edges: articles,
     pathPrefix: basePath,
@@ -66,26 +77,11 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
     }
   });
 
-  /**
-   * Once the list of articles have bene created, we need to make individual article posts.
-   * To do this, we need to find the corresponding authors since we allow for co-authors.
-   */
   log('Creating', 'article posts');
   const meta = await graphql(query.meta);
-  articles.forEach((article, index) => {
-    const author = authors.find(a => a.name.toLowerCase() === article.author.toLowerCase());
-    if (author == null) {
-      throw new Error(`
-      We could not find the Author for: "${article.title}".
-      Double check the author field is specified in your post and the name
-      matches a specified author.
-      Provided author: ${article.author}
-      ${error}
-    `);
-    }
-
+  articles.forEach(article => {
     const otherArticlesFromSameAuthor = articles.filter(
-      a => a.author.toLowerCase() === article.author.toLowerCase() && a.id !== article.id
+      a => a.author.name.toLowerCase() === article.author.name.toLowerCase() && a.id !== article.id
     );
 
     let next = [];
@@ -102,9 +98,8 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
       component: templates.article,
       context: {
         article,
-        author,
         basePath,
-        permalink: `${meta.data.site.siteMetadata.siteUrl}${article.slug}/`,
+        permalink: `${meta.data.site.siteMetadata.siteUrl}${article.slug}`,
         slug: article.slug,
         id: article.id,
         title: article.title,
@@ -121,10 +116,8 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
 
   authors.forEach(author => {
     const articlesTheAuthorHasWritten = articles.filter(
-      article => article.author.toLowerCase() === author.name.toLowerCase()
+      article => article.author.name.toLowerCase() === author.name.toLowerCase()
     );
-    const path = slugify(author.slug, 'places');
-
     createPaginatedPages({
       edges: articlesTheAuthorHasWritten,
       pathPrefix: author.slug,
@@ -134,7 +127,7 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
       buildPath: buildPaginatedPath,
       context: {
         author,
-        originalPath: path,
+        originalPath: author.slug,
         skip: pageLength,
         limit: pageLength
       }

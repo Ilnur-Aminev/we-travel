@@ -6,9 +6,9 @@ import SEO from '../components/SEO';
 import Layout from '../components/Layout';
 import { Paginator } from '../components/Navigation/Navigation.Paginator';
 
-import mediaqueries from "../styles/media";
+import mediaqueries from '../styles/media';
 import ArticlesHero from '../sections/articles/Articles.Hero';
-import ArticlesList from '../sections/articles/Articles.List';
+import { ArticlesList } from '../sections/articles/Articles.List';
 import { ArticlesTemplate } from '../types';
 import { graphql, useStaticQuery } from 'gatsby';
 
@@ -37,7 +37,7 @@ const ArticlesPage: ArticlesTemplate = ({ location, pageContext }) => {
       <SEO pathname={location.pathname} />
       <ArticlesHero authors={authors} />
       <Section narrow>
-        <ArticlesList articles={articles} authors={authors} />
+        <ArticlesList articles={articles} authors={authors} showAuthorInfo/>
         <ArticlesPaginator show={pageContext.pageCount > 1}>
           <Paginator {...pageContext} siteUrl={siteUrl} />
         </ArticlesPaginator>
@@ -64,7 +64,9 @@ const ArticlesGradient = styled.div`
 const ArticlesPaginator = styled.div<{ show: boolean }>`
   ${p => p.show && `margin-top: 90px;`}
 
-  ${p => p.show && mediaqueries.tablet`
+  ${p =>
+    p.show &&
+    mediaqueries.tablet`
     margin-top: 16px;
   `}
 `;

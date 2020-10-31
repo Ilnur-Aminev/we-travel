@@ -42,7 +42,7 @@ export interface IAuthor {
 
 export interface IArticle {
   slug: string;
-  author: string;
+  author: IAuthor;
   title: string;
   seoTitle?: string;
   seoDescription?: string;
@@ -87,7 +87,6 @@ export type ArticlesTemplate = React.FC<{
 
 export type ArticleTemplate = React.FC<{
   pageContext: {
-    author: IAuthor;
     article: IArticle;
     next: IArticle[];
   };

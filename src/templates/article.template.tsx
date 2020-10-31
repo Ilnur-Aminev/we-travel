@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import throttle from 'lodash/throttle';
-import { graphql, useStaticQuery } from 'gatsby';
 
 import Layout from '../components/Layout';
 import MDXRenderer from '../components/MDX';
@@ -23,7 +22,7 @@ const Article: ArticleTemplate = ({ pageContext, location }) => {
 
   const [hasCalculated, setHasCalculated] = useState<boolean>(false);
   const [contentHeight, setContentHeight] = useState<number>(0);
-  const { article, author, next } = pageContext;
+  const { article, next } = pageContext;
 
   useEffect(() => {
     const calculateBodySize = throttle(() => {
@@ -61,8 +60,8 @@ const Article: ArticleTemplate = ({ pageContext, location }) => {
 
   return (
     <Layout>
-      <ArticleSEO article={article} author={author} location={location} />
-      <ArticleHero article={article} author={author} />
+      <ArticleSEO article={article} author={article.author} location={location} />
+      <ArticleHero article={article} author={article.author} />
       <ArticleAside contentHeight={contentHeight}>
         <Progress contentHeight={contentHeight} />
       </ArticleAside>
@@ -72,7 +71,7 @@ const Article: ArticleTemplate = ({ pageContext, location }) => {
       {next.length > 0 && (
         <NextArticle narrow>
           <FooterNext>
-            <FooterNextTitle>Другие достопримечательности региона {author.name}</FooterNextTitle>
+            <FooterNextTitle>Другие достопримечательности региона {article.author.name}</FooterNextTitle>
           </FooterNext>
           <ArticlesNext articles={next} />
           <FooterSpacer />

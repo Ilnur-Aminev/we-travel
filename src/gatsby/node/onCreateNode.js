@@ -15,38 +15,6 @@ module.exports = ({ node, actions, getNode, createNodeId }) => {
   const fileNode = getNode(node.parent);
   const source = fileNode && fileNode.sourceInstanceName;
 
-  // ///////////////// Utility functions ///////////////////
-
-  function generateArticlePermalink(slug, date) {
-    const [year, month, day] = date.match(/\d{4}-\d{2}-\d{2}/)[0].split('-');
-    const permalinkData = {
-      year,
-      month,
-      day,
-      slug
-    };
-
-    const permalink = articlePermalinkFormat.replace(/(:[a-z_]+)/g, match => {
-      const key = match.substr(1);
-      if (permalinkData.hasOwnProperty(key)) {
-        return permalinkData[key];
-      }
-      throw new Error(`
-          We could not find the value for: "${key}".
-          Please verify the articlePermalinkFormat format in theme options.
-          https://github.com/narative/gatsby-theme-novela#theme-options
-        `);
-    });
-
-    return permalink;
-  }
-
-  function generateSlug(...arguments_) {
-    return `/${arguments_.join('/')}`.replace(/\/\/+/g, '/') + '/';
-  }
-
-  // ///////////////////////////////////////////////////////
-
   if (node.internal.type === `AuthorsYaml`) {
     const slug = node.slug
       ? `/${node.slug}`
@@ -56,7 +24,7 @@ module.exports = ({ node, actions, getNode, createNodeId }) => {
 
     const fieldData = {
       ...node,
-      slug: generateSlug(basePath, 'places', slug)
+      slug: generateSlug(basePath, slugify(node.country.toLowerCase()), slug)
     };
 
     createNode({
@@ -119,4 +87,36 @@ module.exports = ({ node, actions, getNode, createNodeId }) => {
 
     createParentChildLink({ parent: fileNode, child: node });
   }
+
+  // ///////////////// Utility functions ///////////////////
+
+  function generateArticlePermalink(slug, date) {
+    const [year, month, day] = date.match(/\d{4}-\d{2}-\d{2}/)[0].split('-');
+    const permalinkData = {
+      year,
+      month,
+      day,
+      slug
+    };
+
+    const permalink = articlePermalinkFormat.replace(/(:[a-z_]+)/g, match => {
+      const key = match.substr(1);
+      if (permalinkData.hasOwnProperty(key)) {
+        return permalinkData[key];
+      }
+      throw new Error(`
+            We could not find the value for: "${key}".
+            Please verify the articlePermalinkFormat format in theme options.
+            https://github.com/narative/gatsby-theme-novela#theme-options
+          `);
+    });
+
+    return permalink;
+  }
+
+  function generateSlug(...arguments_) {
+    return `/${arguments_.join('/')}`.replace(/\/\/+/g, '/');
+  }
+
+  // ///////////////////////////////////////////////////////
 };

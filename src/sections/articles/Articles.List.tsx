@@ -28,17 +28,17 @@ import { AdditionalInfo, SightName } from '../../components/Common/Common';
 
 interface ArticlesListProps {
   articles: IArticle[];
-  authors?: IAuthor[];
+  showAuthorInfo?: boolean;
   alwaysShowAllDetails?: boolean;
 }
 
 interface ArticlesListItemProps {
   article: IArticle;
-  authors?: IAuthor[];
+  showAuthorInfo?: boolean;
   narrow?: boolean;
 }
 
-const ArticlesList: React.FC<ArticlesListProps> = ({ articles, alwaysShowAllDetails, authors }) => {
+export const ArticlesList: React.FC<ArticlesListProps> = ({ articles, alwaysShowAllDetails, showAuthorInfo }) => {
   if (!articles) return null;
 
   const hasOnlyOneArticle = articles.length === 1;
@@ -66,8 +66,8 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ articles, alwaysShowAllDeta
 
         return (
           <List key={index} gridLayout={gridLayout} hasOnlyOneArticle={hasOnlyOneArticle} reverse={isEven}>
-            <ListItem article={ap[0]} narrow={isEven} authors={authors} />
-            <ListItem article={ap[1]} narrow={isOdd} authors={authors} />
+            <ListItem article={ap[0]} narrow={isEven} showAuthorInfo={showAuthorInfo} />
+            <ListItem article={ap[1]} narrow={isOdd} showAuthorInfo={showAuthorInfo} />
           </List>
         );
       })}
@@ -75,16 +75,14 @@ const ArticlesList: React.FC<ArticlesListProps> = ({ articles, alwaysShowAllDeta
   );
 };
 
-export default ArticlesList;
-
-const ListItem: React.FC<ArticlesListItemProps> = ({ article, narrow, authors }) => {
+const ListItem: React.FC<ArticlesListItemProps> = ({ article, narrow, showAuthorInfo }) => {
   if (!article) return null;
 
   const { gridLayout } = useContext(GridLayoutContext);
   const hasOverflow = narrow && article.title.length > 35;
   const imageSource = narrow ? article.hero.narrow : article.hero.regular;
   const hasHeroImage = imageSource && Object.keys(imageSource).length !== 0 && imageSource.constructor === Object;
-  const authorInfo = authors && authors.find(a => a.name === article.author);
+  const { name, color, country } = article.author;
   return (
     <ArticleLink to={article.slug} data-a11y="false">
       <Item gridLayout={gridLayout}>
@@ -99,10 +97,10 @@ const ListItem: React.FC<ArticlesListItemProps> = ({ article, narrow, authors })
             {article.excerpt}
           </Excerpt>
           <MetaData>
-            {authorInfo && (
+            {showAuthorInfo && (
               <>
-                <SightName color={authorInfo.color}>{article.author}</SightName>
-                <AdditionalInfo>{authorInfo.country}</AdditionalInfo>
+                <SightName color={color}>{name}</SightName>
+                <AdditionalInfo>{country}</AdditionalInfo>
               </>
             )}
             <AdditionalInfo>{article.type}</AdditionalInfo>
