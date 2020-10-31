@@ -1,6 +1,10 @@
 // Load static fonts
 require('typeface-merriweather');
 
-exports.onInitialClientRender = require('./src/gatsby/browser/onInitialClientRender');
-exports.onRouteUpdate = require('./src/gatsby/browser/onRouteUpdate');
-exports.shouldUpdateScroll = require('./src/gatsby/browser/shouldUpdateScroll');
+exports.onRouteUpdate = location => {
+  if (location.hash) {
+    setTimeout(() => {
+      document.querySelector(`${location.hash}`).scrollIntoView();
+    }, 0);
+  }
+};
