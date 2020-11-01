@@ -43,4 +43,4 @@ type: Пляж
 Перед поездкой узнайте когда отлив на [специальном сайте](https://www.tide-forecast.com/locations/Phuket/tides/latest), иначе купаться будет неудобно.
 
 
-Рядом с пляжем есть смотровая площадка Yanui View Point, где можно встретить закат, но если хотите вид получше, то поднимитесь на [смотровую площадку “Ветряки”](https://we-travel.today/smotrovaya-ploshadka-vetryaki/). Еще чуть южнее находится еще одна знаменитая обзорная площадка [Мыс Промтеп](https://we-travel.today/mys-promtep/).
+Рядом с пляжем есть смотровая площадка Yanui View Point, где можно встретить закат, но если хотите вид получше, то поднимитесь на [смотровую площадку “Ветряки”](https://we-travel.today/tajland/phuket/smotrovaya-ploshadka-vetryaki/). Еще чуть южнее находится еще одна знаменитая обзорная площадка [Мыс Промтеп](https://we-travel.today/tajland/phuket/mys-promtep/).

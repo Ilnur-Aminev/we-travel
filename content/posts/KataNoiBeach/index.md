@@ -48,4 +48,4 @@ type: Пляж
 
 Если вы едете с юга, то до пляжа можно добраться по дороге, и там более просторная парковка.
 
-Недалеко находится самая известная смотровая площадка на Пхукете — [Karon View Point](https://we-travel.today/smotrovaya-ploshadka-karon/).  
+Недалеко находится самая известная смотровая площадка на Пхукете — [Karon View Point](https://we-travel.today/tajland/phuket/smotrovaya-ploshadka-karon/).  
