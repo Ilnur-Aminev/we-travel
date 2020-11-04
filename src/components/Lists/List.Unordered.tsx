@@ -6,9 +6,9 @@ const UnorderedList = styled.ul`
   counter-reset: list;
   color: ${p => p.theme.colors.articleText};
   position: relative;
-  padding: 15px 0 30px 30px;
+  padding: 15px 0 30px 25px;
   transition: ${p => p.theme.colorModeTransition};
-  margin: 0 auto;
+  margin: -30px auto 0;
   font-size: 18px;
 
   width: 100%;
@@ -51,19 +51,15 @@ const UnorderedList = styled.ul`
   }
 
   li::before {
-    width: 3rem;
     display: inline-block;
-    position: absolute;
     color: ${p => p.theme.colors.articleText};
-  }
-
-  li::before {
     content: '';
     position: absolute;
-    left: -30px;
-    top: 8px;
+    left: -25px;
+    top: 10px;
     height: 8px;
     width: 8px;
+    border-radius: 50%;
     background: ${p => p.theme.colors.articleText};
 
     ${mediaqueries.tablet`

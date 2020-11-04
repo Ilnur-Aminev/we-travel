@@ -6,10 +6,32 @@ const OrderedList = styled.ol`
   counter-reset: list;
   color: ${p => p.theme.colors.articleText};
   position: relative;
-  padding: 15px 0 30px 30px;
+  padding: 15px 10px 30px 30px;
   margin: 0 auto;
   transition: ${p => p.theme.colorModeTransition};
   font-size: 18px;
+
+  & ol {
+    counter-reset: subList;
+    padding: 15px 10px 0 35px;
+    font-size: 16px;
+
+    & li {
+      padding-left: 0;
+    }
+
+    & li:before {
+      counter-increment: subList;
+      content: counter(list) '.' counter(subList) '.';
+      top: 0;
+      font-size: 16px;
+      left: -3.5rem;
+    }
+
+    & li:last-child {
+      padding-bottom: 0;
+    }
+  }
 
   width: 100%;
   max-width: 680px;
@@ -51,20 +73,13 @@ const OrderedList = styled.ol`
   }
 
   li::before {
-    width: 3rem;
     display: inline-block;
-    position: absolute;
-    color: ${p => p.theme.colors.articleText};
-  }
-
-  li::before {
     counter-increment: list;
     content: counter(list) '.';
-    font-weight: 600;
+    color: #73737d;
     position: absolute;
     left: -3rem;
-    top: -0.3rem;
-    font-size: 2rem;
+    top: 0;
 
     ${mediaqueries.tablet`
       left: 0;
