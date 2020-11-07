@@ -8,7 +8,13 @@ module.exports = {
       heading: `Лучшие доcтопримечательности`,
       maxWidth: 652
     },
-    yandexVerification: 'c232d00659548112'
+    yandexVerification: 'c232d00659548112',
+    social: [
+      {
+        name: `vk`,
+        url: `https://vk.com/wetravel.today`
+      }
+    ]
   },
   pathPrefix: '',
   mapping: {

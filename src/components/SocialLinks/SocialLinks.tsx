@@ -9,7 +9,7 @@ interface SocialLinksProps {
     name: string;
     url: string;
   }[];
-  fill: string;
+  fill?: string;
 }
 
 const icons = {
@@ -32,7 +32,8 @@ const icons = {
   tripadvisor: Icons.TripAdvisor,
   buymeacoffee: Icons.Buymeacoffee,
   mailto: Icons.Mailto,
-  url: Icons.Url
+  url: Icons.Url,
+  vk: Icons.Vk
 };
 
 const getHostname = url => {
@@ -43,10 +44,7 @@ const getServicename = url => {
   return url.toLowerCase().split(':')[0];
 };
 
-const SocialLinks: React.FC<SocialLinksProps> = ({
-  links,
-  fill = '#73737D',
-}) => {
+const SocialLinks: React.FC<SocialLinksProps> = ({ links, fill = '#73737D' }) => {
   if (!links) return null;
 
   return (
@@ -55,9 +53,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
         const name = option.name || getHostname(option.url) || getServicename(option.url);
         const Icon = icons[name] ? icons[name] : icons['url'];
         if (!Icon) {
-          throw new Error(
-            `unsupported social link name=${name} / url=${option.url}`,
-          );
+          throw new Error(`unsupported social link name=${name} / url=${option.url}`);
         }
         return (
           <SocialIconContainer

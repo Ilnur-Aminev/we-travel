@@ -1,9 +1,10 @@
-import React from "react";
-import styled from "@emotion/styled";
-import { graphql, useStaticQuery } from "gatsby";
+import React from 'react';
+import styled from '@emotion/styled';
+import { graphql, useStaticQuery } from 'gatsby';
 
-import Section from "../Section";
-import mediaqueries from "../../styles/media";
+import Section from '../Section';
+import mediaqueries from '../../styles/media';
+import SocialLinks from '../SocialLinks';
 
 const siteQuery = graphql`
   {
@@ -12,6 +13,10 @@ const siteQuery = graphql`
         node {
           siteMetadata {
             name
+            social {
+              url
+              name
+            }
           }
         }
       }
@@ -21,7 +26,7 @@ const siteQuery = graphql`
 
 const Footer: React.FC = () => {
   const results = useStaticQuery(siteQuery);
-  const { name } = results.allSite.edges[0].node.siteMetadata
+  const { name, social } = results.allSite.edges[0].node.siteMetadata;
 
   return (
     <>
@@ -29,9 +34,10 @@ const Footer: React.FC = () => {
       <Section narrow>
         <HoritzontalRule />
         <FooterContainer>
-          <FooterText>
-            © 2020 {name}
-          </FooterText>
+          <FooterText>© 2020 {name}</FooterText>
+          <div>
+            <SocialLinks links={social} />
+          </div>
         </FooterContainer>
       </Section>
     </>
@@ -48,14 +54,14 @@ const FooterContainer = styled.div`
   padding-bottom: 80px;
   color: ${p => p.theme.colors.grey};
 
-  ${mediaqueries.tablet`
+  /* ${mediaqueries.tablet`
     flex-direction: column;
     padding-bottom: 0;
   `}
 
   ${mediaqueries.phablet`
     align-items: flex-start;
-  `}
+  `} */
 `;
 
 const HoritzontalRule = styled.div`
