@@ -16,6 +16,7 @@ import ArticlesNext from '../sections/article/Article.Next';
 import ArticleSEO from '../sections/article/Article.SEO';
 
 import { ArticleTemplate } from '../types';
+import { ArticleMap } from '../sections/article/Article.Map';
 
 const Article: ArticleTemplate = ({ pageContext, location }) => {
   const contentSectionRef = useRef<HTMLElement>(null);
@@ -68,6 +69,7 @@ const Article: ArticleTemplate = ({ pageContext, location }) => {
       <ArticleBody ref={contentSectionRef}>
         <MDXRenderer content={article.body} />
       </ArticleBody>
+      <ArticleMap geoUri={article.geoUri} baloonTitle={article.title} />
       {next.length > 0 && (
         <NextArticle narrow>
           <FooterNext>

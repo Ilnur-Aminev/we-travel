@@ -34,6 +34,9 @@ module.exports = ({ createResolvers }) => {
       seoTitle: {
         resolve: customFieldResolver('seoTitle')
       },
+      geoUri: {
+        resolve: customFieldResolver(`geoUri`)
+      },
       seoDescription: {
         resolve: customFieldResolver('seoDescription')
       },

@@ -24,6 +24,7 @@ module.exports = {
           slug
           title
           seoTitle
+          geoUri
           seoDescription
           author
           date(formatString: "MMMM Do, YYYY")

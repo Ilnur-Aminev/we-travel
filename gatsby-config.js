@@ -33,6 +33,7 @@ module.exports = {
     `gatsby-plugin-cname`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-force-trailing-slashes`,
+    'gatsby-plugin-react-leaflet',
     {
       resolve: `gatsby-plugin-yandex-metrika`,
       options: {

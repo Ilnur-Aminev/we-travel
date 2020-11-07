@@ -50,6 +50,7 @@ export interface IArticle {
   type: string;
   body: string;
   id: string;
+  geoUri: string;
   hero: {
     full: IGatsbyImageFluid;
     preview: IGatsbyImageFluid;

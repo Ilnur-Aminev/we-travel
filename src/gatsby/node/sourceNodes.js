@@ -14,6 +14,7 @@ module.exports = ({ actions }) => {
       type: String
       seoDescription: String
       seoTitle: String
+      geoUri: String
     }
   `);
 };
