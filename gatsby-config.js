@@ -4,6 +4,7 @@ module.exports = {
     name: `We-Travel.today`,
     siteUrl: `https://we-travel.today`,
     description: `Лучшие доcтопримечательности`,
+    seoDescription: 'Лучшие доcтопримечательности',
     hero: {
       heading: `Лучшие доcтопримечательности`,
       maxWidth: 652

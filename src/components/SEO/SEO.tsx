@@ -52,6 +52,7 @@ const seoQuery = graphql`
             title
             name
             yandexVerification
+            seoDescription
           }
         }
       }
@@ -332,14 +333,14 @@ const SEO: React.FC<HelmetProps> = ({
     },
     { itemprop: 'name', content: title || site.title },
     { itemprop: 'image', content: image },
-    { name: 'description', content: description || site.description },
+    { name: 'description', content: description || site.seoDescription || site.description },
     { name: 'yandex-verification', content: site.yandexVerification },
 
     { property: 'og:type', content: 'website' },
     { property: 'og:title', content: title || site.title },
     { property: 'og:url', content: articlepathName || pageUrl },
     { property: 'og:image', content: image },
-    { property: 'og:description', content: description || site.description },
+    { property: 'og:description', content: description || site.seoDescription || site.description },
     { property: 'og:site_name', content: site.name }
   ];
 
