@@ -1,14 +1,17 @@
 import styled from '@emotion/styled';
+import { Link } from 'gatsby';
 import React from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { geoUriParse } from '../../helpers/geoUriParse';
+import { ArticleGeoUri } from '../../types';
 
 interface Props {
   baloonTitle?: string;
   geoUri?: string;
+  regionGeoUris?: ArticleGeoUri[];
 }
 
-export const ArticleMap: React.FC<Props> = ({ baloonTitle, geoUri }) => {
+export const ArticleMap: React.FC<Props> = ({ baloonTitle, geoUri, regionGeoUris }) => {
   if (!geoUri || geoUriParse(geoUri) == null) {
     return null;
   }
@@ -22,9 +25,27 @@ export const ArticleMap: React.FC<Props> = ({ baloonTitle, geoUri }) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Marker position={[latitude, longitude]}>{baloonTitle && <Popup>{baloonTitle}</Popup>}</Marker>
+        {renderRegionUris()}
       </MapContainer>
     </MapWrapper>
   );
+
+  function renderRegionUris() {
+    if (!regionGeoUris || regionGeoUris.length === 0) {
+      return null;
+    }
+
+    return regionGeoUris.map(({ geoUri, slug, title }) => {
+      const { latitude, longitude } = geoUriParse(geoUri)!;
+      return (
+        <Marker position={[latitude, longitude]} key={title}>
+          <Popup>
+            <Link to={slug}>{title}</Link>
+          </Popup>
+        </Marker>
+      );
+    });
+  }
 };
 
 const MapWrapper = styled.div`

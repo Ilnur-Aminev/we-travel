@@ -85,11 +85,17 @@ export type ArticlesTemplate = React.FC<{
   };
   location: Location;
 }>;
+export interface ArticleGeoUri {
+  title: string;
+  geoUri: string;
+  slug: string;
+}
 
 export type ArticleTemplate = React.FC<{
   pageContext: {
     article: IArticle;
     next: IArticle[];
+    regionGeoUris: ArticleGeoUri[];
   };
   location: Location;
 }>;

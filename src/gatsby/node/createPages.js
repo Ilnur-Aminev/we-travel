@@ -93,6 +93,14 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
       next = otherArticlesFromSameAuthor.slice(begin, begin + 2);
     }
 
+    const regionGeoUris = otherArticlesFromSameAuthor
+      .filter(a => !!a.geoUri)
+      .map(({ title, geoUri, slug }) => ({
+        title,
+        geoUri,
+        slug
+      }));
+
     createPage({
       path: article.slug,
       component: templates.article,
@@ -104,7 +112,8 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
         id: article.id,
         title: article.title,
         canonicalUrl: article.canonical_url,
-        next
+        next,
+        regionGeoUris
       }
     });
   });
