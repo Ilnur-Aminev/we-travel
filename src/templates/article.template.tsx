@@ -69,7 +69,11 @@ const Article: ArticleTemplate = ({ pageContext, location }) => {
       <ArticleBody ref={contentSectionRef}>
         <MDXRenderer content={article.body} />
       </ArticleBody>
-      <ArticleMap geoUri={article.geoUri} baloonTitle={article.title} regionGeoUris={pageContext.regionGeoUris} />
+      <ArticleMap
+        geoUri={article.geoUri}
+        baloon={{ title: article.title, excerpt: article.excerpt, hero: article.hero.narrow }}
+        regionGeoUris={pageContext.regionGeoUris}
+      />
       {next.length > 0 && (
         <NextArticle narrow>
           <FooterNext>

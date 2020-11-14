@@ -7,7 +7,7 @@ import Headings from '../../components/Headings';
 import Image, { ImagePlaceholder } from '../../components/Image';
 
 import mediaqueries from '../../styles/media';
-import { IArticle, IAuthor } from '../../types';
+import { IArticle } from '../../types';
 
 import { GridLayoutContext } from './Articles.List.Context';
 import { AdditionalInfo, SightName } from '../../components/Common/Common';
@@ -114,7 +114,7 @@ const ListItem: React.FC<ArticlesListItemProps> = ({ article, narrow, showAuthor
 const wide = '1fr';
 const narrow = '457px';
 
-const limitToTwoLines = css`
+export const limitToTwoLines = css`
   text-overflow: ellipsis;
   overflow-wrap: normal;
   -webkit-line-clamp: 2;
@@ -260,7 +260,7 @@ const ImageContainer = styled.div<{ narrow: boolean; gridLayout: string }>`
   `}
 `;
 
-const Title = styled(Headings.h2)`
+export const Title = styled(Headings.h2)`
   font-size: 21px;
   font-family: ${p => p.theme.fonts.serif};
   margin-bottom: ${p => (p.hasOverflow && p.gridLayout === 'tiles' ? '35px' : '10px')};

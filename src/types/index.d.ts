@@ -55,6 +55,7 @@ export interface IArticle {
     full: IGatsbyImageFluid;
     preview: IGatsbyImageFluid;
     regular: IGatsbyImageFluid;
+    narrow: IGatsbyImageFluid;
     seo: { src: string };
   };
   canonical_url?: string;
@@ -89,6 +90,8 @@ export interface ArticleGeoUri {
   title: string;
   geoUri: string;
   slug: string;
+  hero: IGatsbyImageFluid;
+  excerpt: string;
 }
 
 export type ArticleTemplate = React.FC<{

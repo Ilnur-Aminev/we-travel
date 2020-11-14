@@ -95,10 +95,12 @@ module.exports = async ({ actions: { createPage }, graphql }) => {
 
     const regionGeoUris = otherArticlesFromSameAuthor
       .filter(a => !!a.geoUri)
-      .map(({ title, geoUri, slug }) => ({
+      .map(({ title, geoUri, slug, hero, excerpt }) => ({
         title,
         geoUri,
-        slug
+        slug,
+        hero: hero.narrow,
+        excerpt
       }));
 
     createPage({

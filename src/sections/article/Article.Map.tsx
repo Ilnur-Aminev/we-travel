@@ -3,15 +3,29 @@ import { Link } from 'gatsby';
 import React from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { geoUriParse } from '../../helpers/geoUriParse';
-import { ArticleGeoUri } from '../../types';
+import { ArticleGeoUri, IGatsbyImage } from '../../types';
+import Image from '../../components/Image';
+import { limitToTwoLines } from '../articles/Articles.List';
+
+export interface BaloonProps {
+  title: string;
+  excerpt: string;
+  hero: IGatsbyImage;
+}
+
+interface MarkerProps extends BaloonProps {
+  longitude: number;
+  latitude: number;
+  slug?: string;
+}
 
 interface Props {
-  baloonTitle?: string;
+  baloon: BaloonProps;
   geoUri?: string;
   regionGeoUris?: ArticleGeoUri[];
 }
 
-export const ArticleMap: React.FC<Props> = ({ baloonTitle, geoUri, regionGeoUris }) => {
+export const ArticleMap: React.FC<Props> = ({ baloon: { hero, title, excerpt }, geoUri, regionGeoUris }) => {
   if (!geoUri || geoUriParse(geoUri) == null) {
     return null;
   }
@@ -24,7 +38,7 @@ export const ArticleMap: React.FC<Props> = ({ baloonTitle, geoUri, regionGeoUris
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[latitude, longitude]}>{baloonTitle && <Popup>{baloonTitle}</Popup>}</Marker>
+        <MapMarker title={title} hero={hero} latitude={latitude} longitude={longitude} excerpt={excerpt} />
         {renderRegionUris()}
       </MapContainer>
     </MapWrapper>
@@ -35,21 +49,71 @@ export const ArticleMap: React.FC<Props> = ({ baloonTitle, geoUri, regionGeoUris
       return null;
     }
 
-    return regionGeoUris.map(({ geoUri, slug, title }) => {
+    return regionGeoUris.map(({ geoUri, slug, title, hero, excerpt }) => {
       const { latitude, longitude } = geoUriParse(geoUri)!;
       return (
-        <Marker position={[latitude, longitude]} key={title}>
-          <Popup>
-            <Link to={slug}>{title}</Link>
-          </Popup>
-        </Marker>
+        <MapMarker
+          key={title}
+          title={title}
+          slug={slug}
+          hero={hero}
+          latitude={latitude}
+          longitude={longitude}
+          excerpt={excerpt}
+        />
       );
     });
   }
 };
 
+const MapMarker: React.FC<MarkerProps> = ({ title, excerpt, hero, latitude, longitude, slug }) => {
+  const renderTitle = () =>
+    slug ? (
+      <ArticleLink to={slug}>
+        <Title>{title}</Title>
+      </ArticleLink>
+    ) : (
+      <Title>{title}</Title>
+    );
+
+  return (
+    <Marker position={[latitude, longitude]} key={title} title={title}>
+      <Popup>
+        <HeroWrapper>
+          <Image src={hero} />
+        </HeroWrapper>
+        {renderTitle()}
+        <Description>{excerpt}</Description>
+      </Popup>
+    </Marker>
+  );
+};
+
+const HeroWrapper = styled.div`
+  margin: 20px 0;
+`;
+
+const ArticleLink = styled(Link)`
+  &:hover > * {
+    color: #016891;
+  }
+`;
+
+const Title = styled.h3`
+  font-size: 20px;
+  font-family: ${p => p.theme.fonts.serif};
+  margin-bottom: 10px;
+  line-height: 1.1;
+  transition: color 0.3s ease-in-out;
+  ${limitToTwoLines};
+`;
+
 const MapWrapper = styled.div`
   position: relative;
   height: 600px;
   margin: 40px auto 70px;
+`;
+
+const Description = styled.p`
+  margin: 0 0 18px !important;
 `;
