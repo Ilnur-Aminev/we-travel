@@ -4,7 +4,7 @@ module.exports = {
     name: `We-Travel.today`,
     siteUrl: `https://we-travel.today`,
     description: `Лучшие доcтопримечательности`,
-    seoDescription: 'Лучшие доcтопримечательности',
+    seoDescription: 'Лучшие доcтопримечательности Свердловской области, Пхукета и Паттайи',
     hero: {
       heading: `Лучшие доcтопримечательности`,
       maxWidth: 652
