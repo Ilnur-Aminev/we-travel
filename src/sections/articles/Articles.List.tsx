@@ -11,6 +11,8 @@ import { IArticle } from '../../types';
 
 import { GridLayoutContext } from './Articles.List.Context';
 import { AdditionalInfo, SightName } from '../../components/Common/Common';
+import { SectionHeader } from './Articles.Hero';
+import Icons from '@icons';
 
 /**
  * Tiles
@@ -42,7 +44,7 @@ export const ArticlesList: React.FC<ArticlesListProps> = ({ articles, alwaysShow
   if (!articles) return null;
 
   const hasOnlyOneArticle = articles.length === 1;
-  const { gridLayout = 'tiles', hasSetGridLayout, getGridLayout } = useContext(GridLayoutContext);
+  const { gridLayout = 'tiles', hasSetGridLayout, getGridLayout, setGridLayout } = useContext(GridLayoutContext);
 
   /**
    * We're taking the flat array of articles [{}, {}, {}...]
@@ -58,20 +60,47 @@ export const ArticlesList: React.FC<ArticlesListProps> = ({ articles, alwaysShow
 
   useEffect(() => getGridLayout(), []);
 
-  return (
-    <ArticlesListContainer style={{ opacity: hasSetGridLayout ? 1 : 0 }} alwaysShowAllDetails={alwaysShowAllDetails}>
-      {articlePairs.map((ap, index) => {
-        const isEven = index % 2 !== 0;
-        const isOdd = index % 2 !== 1;
+  const tilesIsActive = hasSetGridLayout && gridLayout === 'tiles';
 
-        return (
-          <List key={index} gridLayout={gridLayout} hasOnlyOneArticle={hasOnlyOneArticle} reverse={isEven}>
-            <ListItem article={ap[0]} narrow={isEven} showAuthorInfo={showAuthorInfo} />
-            <ListItem article={ap[1]} narrow={isOdd} showAuthorInfo={showAuthorInfo} />
-          </List>
-        );
-      })}
-    </ArticlesListContainer>
+  return (
+    <>
+      <HeroGridContainer>
+        <SectionHeader>Интересные места со всего мира</SectionHeader>
+        <GridControlsContainer>
+          <GridButton
+            onClick={() => setGridLayout('tiles')}
+            active={tilesIsActive}
+            data-a11y="false"
+            title="Show articles in Tile grid"
+            aria-label="Show articles in Tile grid"
+          >
+            <Icons.Tiles />
+          </GridButton>
+          <GridButton
+            onClick={() => setGridLayout('rows')}
+            active={!tilesIsActive}
+            data-a11y="false"
+            title="Show articles in Row grid"
+            aria-label="Show articles in Row grid"
+          >
+            <Icons.Rows />
+          </GridButton>
+        </GridControlsContainer>
+      </HeroGridContainer>
+      <ArticlesListContainer style={{ opacity: hasSetGridLayout ? 1 : 0 }} alwaysShowAllDetails={alwaysShowAllDetails}>
+        {articlePairs.map((ap, index) => {
+          const isEven = index % 2 !== 0;
+          const isOdd = index % 2 !== 1;
+
+          return (
+            <List key={index} gridLayout={gridLayout} hasOnlyOneArticle={hasOnlyOneArticle} reverse={isEven}>
+              <ListItem article={ap[0]} narrow={isEven} showAuthorInfo={showAuthorInfo} />
+              <ListItem article={ap[1]} narrow={isOdd} showAuthorInfo={showAuthorInfo} />
+            </List>
+          );
+        })}
+      </ArticlesListContainer>
+    </>
   );
 };
 
@@ -371,4 +400,69 @@ const CardContent = styled.div`
   ${mediaqueries.phablet`
     padding: 16px;
   `}
+`;
+
+const HeroGridContainer = styled.div`
+  display: flex;
+  align-items: space-between;
+  margin-bottom: 80px;
+
+  ${mediaqueries.tablet`
+    margin-bottom: 60px;
+  `};
+
+  ${mediaqueries.phablet`
+    margin-bottom: 30px;
+  `};
+`;
+
+const GridControlsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+
+  ${mediaqueries.tablet`
+    display: none;
+  `};
+`;
+
+const GridButton = styled.button<{ active: boolean }>`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background 0.25s;
+
+  &:not(:last-child) {
+    margin-right: 30px;
+  }
+
+  &:hover {
+    background: ${p => p.theme.colors.hover};
+  }
+
+  &[data-a11y='true']:focus::after {
+    content: '';
+    position: absolute;
+    left: -10%;
+    top: -10%;
+    width: 120%;
+    height: 120%;
+    border: 2px solid ${p => p.theme.colors.accent};
+    background: rgba(255, 255, 255, 0.01);
+    border-radius: 50%;
+  }
+
+  svg {
+    opacity: ${p => (p.active ? 1 : 0.25)};
+    transition: opacity 0.2s;
+
+    path {
+      fill: ${p => p.theme.colors.primary};
+    }
+  }
 `;

@@ -1,3 +1,8 @@
+const fs = require('fs')
+const path = require('path')
+
+const about = fs.readFileSync(path.resolve(__dirname, 'about.txt'), 'utf8')
+
 module.exports = {
   siteMetadata: {
     title: `Лучшие достопримечательности | we-travel.today`,
@@ -5,9 +10,7 @@ module.exports = {
     siteUrl: `https://we-travel.today`,
     description: `Лучшие доcтопримечательности`,
     seoDescription: 'Лучшие доcтопримечательности Свердловской области, Пхукета и Паттайи',
-    hero: {
-      heading: `Интересные места со всего мира`
-    },
+    about,
     yandexVerification: 'c232d00659548112',
     social: [
       {

@@ -11,6 +11,7 @@ import ArticlesHero from '../sections/articles/Articles.Hero';
 import { ArticlesList } from '../sections/articles/Articles.List';
 import { ArticlesTemplate } from '../types';
 import { graphql, useStaticQuery } from 'gatsby';
+import { ArticlesAbout } from '../sections/articles/Articles.About';
 
 const query = graphql`
   {
@@ -37,11 +38,12 @@ const ArticlesPage: ArticlesTemplate = ({ location, pageContext }) => {
       <SEO pathname={location.pathname} />
       <ArticlesHero authors={authors} />
       <Section narrow>
-        <ArticlesList articles={articles} authors={authors} showAuthorInfo/>
+        <ArticlesList articles={articles} authors={authors} showAuthorInfo />
         <ArticlesPaginator show={pageContext.pageCount > 1}>
           <Paginator {...pageContext} siteUrl={siteUrl} />
         </ArticlesPaginator>
       </Section>
+      <ArticlesAbout />
       <ArticlesGradient />
     </Layout>
   );
