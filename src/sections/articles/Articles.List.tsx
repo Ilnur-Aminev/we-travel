@@ -260,7 +260,7 @@ const ImageContainer = styled.div<{ narrow: boolean; gridLayout: string }>`
   `}
 `;
 
-export const Title = styled(Headings.h2)`
+export const Title = styled(Headings.h3)`
   font-size: 21px;
   font-family: ${p => p.theme.fonts.serif};
   margin-bottom: ${p => (p.hasOverflow && p.gridLayout === 'tiles' ? '35px' : '10px')};
@@ -338,8 +338,8 @@ const ArticleLink = styled(Link)`
     box-shadow: 0 50px 80px -20px rgba(0, 0, 0, 0.27), 0 30px 50px -30px rgba(0, 0, 0, 0.3);
   }
 
-  &:hover h2,
-  &:focus h2 {
+  &:hover h3,
+  &:focus h3 {
     color: ${p => p.theme.colors.accent};
   }
 

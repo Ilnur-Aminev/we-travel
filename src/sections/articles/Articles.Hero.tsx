@@ -18,7 +18,6 @@ const authorQuery = graphql`
           siteMetadata {
             hero {
               heading
-              maxWidth
             }
           }
         }
@@ -36,12 +35,13 @@ const ArticlesHero: React.FC<{ authors: IAuthor[] }> = ({ authors }) => {
   return (
     <>
       <HeroImg />
-      <Section relative id="Articles__Hero">
-        <HeadingContainer style={{ maxWidth: `${hero.maxWidth}px` }}>
-          <HeroHeading>{hero.heading}</HeroHeading>
-        </HeadingContainer>
-        <SubheadingContainer>
+      <Section id="Articles__Hero">
+        <RegionsContainer>
+          <SectionHeader>Регионы</SectionHeader>
           <Regions authors={authors} />
+        </RegionsContainer>
+        <HeroGridContainer>
+          <SectionHeader>{hero.heading}</SectionHeader>
           <GridControlsContainer>
             <GridButton
               onClick={() => setGridLayout('tiles')}
@@ -62,7 +62,7 @@ const ArticlesHero: React.FC<{ authors: IAuthor[] }> = ({ authors }) => {
               <Icons.Rows />
             </GridButton>
           </GridControlsContainer>
-        </SubheadingContainer>
+        </HeroGridContainer>
       </Section>
     </>
   );
@@ -84,14 +84,10 @@ const HeroImg = styled.section`
   `};
 `;
 
-const SubheadingContainer = styled.div`
+const HeroGridContainer = styled.div`
   display: flex;
   align-items: space-between;
-  margin-bottom: 100px;
-
-  ${mediaqueries.desktop`
-    margin-bottom: 80px;
-  `};
+  margin-bottom: 80px;
 
   ${mediaqueries.tablet`
     margin-bottom: 60px;
@@ -112,25 +108,21 @@ const GridControlsContainer = styled.div`
   `};
 `;
 
-const HeadingContainer = styled.div`
+const RegionsContainer = styled.div`
   margin: 100px 0;
 
-  ${mediaqueries.desktop`
-    width: 80%;
-  `}
-
   ${mediaqueries.tablet`
-    width: 100%;
     margin: 35px 0 30px;
   `}
 `;
 
-const HeroHeading = styled.h1`
+const SectionHeader = styled.h2`
   font-style: normal;
   font-weight: 800;
-  font-size: 64px;
+  font-size: 48px;
   line-height: 1.15;
   color: ${p => p.theme.colors.primary};
+  font-family: ${p => p.theme.fonts.serif};
 
   a {
     color: ${p => p.theme.colors.accent};
