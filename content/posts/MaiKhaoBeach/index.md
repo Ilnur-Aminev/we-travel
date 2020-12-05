@@ -5,6 +5,7 @@ date: 2020-09-25
 excerpt: Этот пляж знаменит тем, что находится рядом с аэропортом, взлетно-посадочная полоса построена примерно в 100 метрах от пляжа.
 hero: images/aereo-L.jpg
 type: Пляж
+geoUri: geo:8.1117,98.3018?z=16
 ---
 Когда можно посетить:  
 **В любое время**
@@ -27,6 +28,9 @@ type: Пляж
 ![Пляж Май Као (Май Кхао) Mai Khao Beach](images/TurtleOnTheBeach(solosholidays.co.uk).jpg "Источник solosholidays.co.uk")
 
 С ноября по февраль черепахи откладывают яйца на берегу, поэтому на заповедном пляже действуют ограничения для туристов. Но зато есть возможность увидеть этих удивительных животных.
+
+<iframe src="https://www.google.com/maps/embed?pb=!4v1607149768436!6m8!1m7!1sCAoSLEFGMVFpcE81ZEh4WHlkUUhCeEdYUS1EcEpBQklDSHVQMXZuMm1UX1VKZUZM!2m2!1d8.1118326!2d98.301857!3f158.12249268724935!4f25.01359126382357!5f0.7820865974627469" width="680" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+<br></br>
 
 
 

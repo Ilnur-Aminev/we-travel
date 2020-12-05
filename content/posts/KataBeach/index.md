@@ -5,6 +5,7 @@ date: 2020-09-25
 excerpt: Пляж Ката по праву занимает третье место по популярности на Пхукете. Тут понравится многим отдыхающим, спокойная атмосфера, есть вся необходимая инфраструктура, а море чистое.
 hero: images/katarocks.com-kata.jpg
 type: Пляж
+geoUri: geo:7.8201,98.2976?z=16
 ---
 Когда можно посетить:  
 **В любое время**
@@ -46,6 +47,10 @@ type: Пляж
 - Аренда каяка;
 - Прокат снаряжений для снорклинга;
 - Можно полетать на парашюте за катером.
+
+<iframe src="https://www.google.com/maps/embed?pb=!4v1607150385408!6m8!1m7!1sCAoSLEFGMVFpcE9sN3NjQml4dno1MElQRzhfU3hFeHltdmFYTURaSWtQYXY2b2xP!2m2!1d7.8210366!2d98.2973425!3f349.3773473213664!4f-40.63755745599202!5f0.7820865974627469" width="680" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+<br></br>
+
  
  
 ## Информация для посещения
