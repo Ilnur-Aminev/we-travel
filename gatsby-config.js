@@ -6,8 +6,8 @@ module.exports = {
     description: `Лучшие доcтопримечательности`,
     seoDescription: 'Лучшие доcтопримечательности Свердловской области, Пхукета и Паттайи',
     hero: {
-      heading: `Лучшие доcтопримечательности`,
       maxWidth: 652
+      heading: `Интересные места со всего мира`
     },
     yandexVerification: 'c232d00659548112',
     social: [

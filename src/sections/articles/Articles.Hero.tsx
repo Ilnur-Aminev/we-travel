@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from '@emotion/styled';
-
 import Section from '../../components/Section';
 import Icons from '../../icons/index';
 import mediaqueries from '../../styles/media';
 import { IAuthor } from '../../types';
+import heroImg from '../../assets/hero.svg';
 
 import { GridLayoutContext } from './Articles.List.Context';
 import { Regions } from '../../components/Regions';
@@ -33,40 +33,56 @@ const ArticlesHero: React.FC<{ authors: IAuthor[] }> = ({ authors }) => {
   const results = useStaticQuery(authorQuery);
   const hero = results.site.edges[0].node.siteMetadata.hero;
   const tilesIsActive = hasSetGridLayout && gridLayout === 'tiles';
-
   return (
-    <Section relative id="Articles__Hero">
-      <HeadingContainer style={{ maxWidth: `${hero.maxWidth}px` }}>
-        <HeroHeading dangerouslySetInnerHTML={{ __html: hero.heading }} />
-      </HeadingContainer>
-      <SubheadingContainer>
-        <Regions authors={authors} />
-        <GridControlsContainer>
-          <GridButton
-            onClick={() => setGridLayout('tiles')}
-            active={tilesIsActive}
-            data-a11y="false"
-            title="Show articles in Tile grid"
-            aria-label="Show articles in Tile grid"
-          >
-            <Icons.Tiles />
-          </GridButton>
-          <GridButton
-            onClick={() => setGridLayout('rows')}
-            active={!tilesIsActive}
-            data-a11y="false"
-            title="Show articles in Row grid"
-            aria-label="Show articles in Row grid"
-          >
-            <Icons.Rows />
-          </GridButton>
-        </GridControlsContainer>
-      </SubheadingContainer>
-    </Section>
+    <>
+      <HeroImg />
+      <Section relative id="Articles__Hero">
+        <HeadingContainer style={{ maxWidth: `${hero.maxWidth}px` }}>
+          <HeroHeading>{hero.heading}</HeroHeading>
+        </HeadingContainer>
+        <SubheadingContainer>
+          <Regions authors={authors} />
+          <GridControlsContainer>
+            <GridButton
+              onClick={() => setGridLayout('tiles')}
+              active={tilesIsActive}
+              data-a11y="false"
+              title="Show articles in Tile grid"
+              aria-label="Show articles in Tile grid"
+            >
+              <Icons.Tiles />
+            </GridButton>
+            <GridButton
+              onClick={() => setGridLayout('rows')}
+              active={!tilesIsActive}
+              data-a11y="false"
+              title="Show articles in Row grid"
+              aria-label="Show articles in Row grid"
+            >
+              <Icons.Rows />
+            </GridButton>
+          </GridControlsContainer>
+        </SubheadingContainer>
+      </Section>
+    </>
   );
 };
 
 export default ArticlesHero;
+
+const HeroImg = styled.section`
+  width: 100%;
+  margin: 60px 0 40px;
+  background: url(${heroImg});
+  height: 400px;
+  background-size: cover;
+
+  ${mediaqueries.phablet`
+    height: 200px;
+    margin: 20px 0;
+    background-position-x: 70%;
+  `};
+`;
 
 const SubheadingContainer = styled.div`
   display: flex;
