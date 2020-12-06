@@ -38,7 +38,7 @@ const ArticlesPage: ArticlesTemplate = ({ location, pageContext }) => {
       <SEO pathname={location.pathname} />
       <ArticlesHero authors={authors} />
       <Section narrow>
-        <ArticlesList articles={articles} authors={authors} showAuthorInfo />
+        <ArticlesList articles={articles} authors={authors} showAuthorInfo header="Интересные места со всего мира" />
         <ArticlesPaginator show={pageContext.pageCount > 1}>
           <Paginator {...pageContext} siteUrl={siteUrl} />
         </ArticlesPaginator>

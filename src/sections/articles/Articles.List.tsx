@@ -32,6 +32,7 @@ interface ArticlesListProps {
   articles: IArticle[];
   showAuthorInfo?: boolean;
   alwaysShowAllDetails?: boolean;
+  header?: string;
 }
 
 interface ArticlesListItemProps {
@@ -40,7 +41,12 @@ interface ArticlesListItemProps {
   narrow?: boolean;
 }
 
-export const ArticlesList: React.FC<ArticlesListProps> = ({ articles, alwaysShowAllDetails, showAuthorInfo }) => {
+export const ArticlesList: React.FC<ArticlesListProps> = ({
+  articles,
+  alwaysShowAllDetails,
+  showAuthorInfo,
+  header
+}) => {
   if (!articles) return null;
 
   const hasOnlyOneArticle = articles.length === 1;
@@ -64,29 +70,31 @@ export const ArticlesList: React.FC<ArticlesListProps> = ({ articles, alwaysShow
 
   return (
     <>
-      <HeroGridContainer>
-        <SectionHeader>Интересные места со всего мира</SectionHeader>
-        <GridControlsContainer>
-          <GridButton
-            onClick={() => setGridLayout('tiles')}
-            active={tilesIsActive}
-            data-a11y="false"
-            title="Show articles in Tile grid"
-            aria-label="Show articles in Tile grid"
-          >
-            <Icons.Tiles />
-          </GridButton>
-          <GridButton
-            onClick={() => setGridLayout('rows')}
-            active={!tilesIsActive}
-            data-a11y="false"
-            title="Show articles in Row grid"
-            aria-label="Show articles in Row grid"
-          >
-            <Icons.Rows />
-          </GridButton>
-        </GridControlsContainer>
-      </HeroGridContainer>
+      {header && (
+        <HeroGridContainer>
+          <SectionHeader>{header}</SectionHeader>
+          <GridControlsContainer>
+            <GridButton
+              onClick={() => setGridLayout('tiles')}
+              active={tilesIsActive}
+              data-a11y="false"
+              title="Show articles in Tile grid"
+              aria-label="Show articles in Tile grid"
+            >
+              <Icons.Tiles />
+            </GridButton>
+            <GridButton
+              onClick={() => setGridLayout('rows')}
+              active={!tilesIsActive}
+              data-a11y="false"
+              title="Show articles in Row grid"
+              aria-label="Show articles in Row grid"
+            >
+              <Icons.Rows />
+            </GridButton>
+          </GridControlsContainer>
+        </HeroGridContainer>
+      )}
       <ArticlesListContainer style={{ opacity: hasSetGridLayout ? 1 : 0 }} alwaysShowAllDetails={alwaysShowAllDetails}>
         {articlePairs.map((ap, index) => {
           const isEven = index % 2 !== 0;
