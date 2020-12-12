@@ -38,7 +38,7 @@ const HeroImg = styled.section`
 `;
 
 const RegionsContainer = styled.div`
-  margin: 70px 0;
+  margin: 70px 0 40px;
 
   ${mediaqueries.tablet`
     margin: 35px 0 30px;

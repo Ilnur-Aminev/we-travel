@@ -69,7 +69,7 @@ export const ArticlesList: React.FC<ArticlesListProps> = ({
   const tilesIsActive = hasSetGridLayout && gridLayout === 'tiles';
 
   return (
-    <>
+    <ListWrapper id="articles">
       {header && (
         <HeroGridContainer>
           <SectionHeader>{header}</SectionHeader>
@@ -108,7 +108,7 @@ export const ArticlesList: React.FC<ArticlesListProps> = ({
           );
         })}
       </ArticlesListContainer>
-    </>
+    </ListWrapper>
   );
 };
 
@@ -150,6 +150,10 @@ const ListItem: React.FC<ArticlesListItemProps> = ({ article, narrow, showAuthor
 
 const wide = '1fr';
 const narrow = '457px';
+
+const ListWrapper = styled.div`
+  padding-top: 30px;
+`;
 
 export const limitToTwoLines = css`
   text-overflow: ellipsis;

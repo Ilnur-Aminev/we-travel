@@ -87,7 +87,7 @@ export class Paginator extends Component<IPaginator, {}> {
         // Otherwise render a PageButton
         <PageNumberButton
           key={`PaginatorPage_${page}`}
-          to={this.getFullPath(page)}
+          to={this.getFullPath(page) + '#articles'}
           style={{ opacity: current === page ? 1 : 0.3 }}
           className="Paginator__pageLink"
         >
@@ -108,11 +108,11 @@ export class Paginator extends Component<IPaginator, {}> {
   };
 
   nextPath = (isAbsolute: boolean = false) => {
-    return this.getFullPath(this.current + 1, isAbsolute);
+    return this.getFullPath(this.current + 1, isAbsolute) + '#articles';
   };
 
   previousPath = (isAbsolute: boolean = false) => {
-    return this.getFullPath(this.current - 1, isAbsolute);
+    return this.getFullPath(this.current - 1, isAbsolute) + '#articles';
   };
 
   render() {
@@ -134,9 +134,7 @@ export class Paginator extends Component<IPaginator, {}> {
           {hasPrevious && <PageButton to={this.previousPath()}>Назад</PageButton>}
           {this.getPageLinks}
           <MobileReference>
-            <PageNumberButton style={{ opacity: 1 }}>
-              {this.current}
-            </PageNumberButton>
+            <PageNumberButton style={{ opacity: 1 }}>{this.current}</PageNumberButton>
             {this.current + 2 <= this.count && <Spacer aria-hidden={true} />}
             {this.current < this.count && (
               <PageNumberButton to={this.getFullPath(this.count)} style={{ color: '#73737D' }}>
