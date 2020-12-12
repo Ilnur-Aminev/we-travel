@@ -25,8 +25,8 @@ export default ArticlesHero;
 
 const HeroImg = styled.section`
   width: 100%;
-  margin: 60px 0 40px;
   background: url(${heroImg});
+  margin-top: 20px;
   height: 400px;
   background-size: cover;
 
@@ -38,7 +38,7 @@ const HeroImg = styled.section`
 `;
 
 const RegionsContainer = styled.div`
-  margin: 100px 0;
+  margin: 70px 0;
 
   ${mediaqueries.tablet`
     margin: 35px 0 30px;

@@ -19,7 +19,7 @@ export const Regions: React.FC<{ authors: IAuthor[] }> = ({ authors }) => {
         {authors.map(a => (
           <RegionLink to={a.slug} key={a.name}>
             <ImageWrapper>
-              <Image src={a.avatar.medium} style={{ height: '200px' }} />
+              <Image src={a.avatar.large} style={{ height: '200px' }} />
             </ImageWrapper>
             <Title>{a.name}</Title>
             <Subtitle>{a.country}</Subtitle>
@@ -62,7 +62,7 @@ const Wrapper = styled.div`
 `;
 
 const DesctopWrapper = styled(Wrapper)`
-  margin: 50px -10px 0;
+  margin: 30px -10px 0;
 `;
 
 const ImageWrapper = styled.div`

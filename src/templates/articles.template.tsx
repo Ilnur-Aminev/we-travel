@@ -56,7 +56,7 @@ const ArticlesGradient = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 590px;
+  height: 290px;
   z-index: 0;
   pointer-events: none;
   background: ${p => p.theme.colors.gradient};
@@ -64,7 +64,7 @@ const ArticlesGradient = styled.div`
 `;
 
 const ArticlesPaginator = styled.div<{ show: boolean }>`
-  ${p => p.show && `margin-top: 90px;`}
+  ${p => p.show && `margin-top: 50px;`}
 
   ${p =>
     p.show &&

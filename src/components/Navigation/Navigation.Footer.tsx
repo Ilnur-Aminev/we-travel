@@ -89,7 +89,7 @@ const FooterGradient = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 590px;
+  height: 390px;
   z-index: 0;
   pointer-events: none;
   background: ${p => p.theme.colors.gradient};

@@ -130,7 +130,7 @@ const ListItem: React.FC<ArticlesListItemProps> = ({ article, narrow, showAuthor
           <Title dark hasOverflow={hasOverflow} gridLayout={gridLayout}>
             {article.title}
           </Title>
-          <Excerpt narrow={narrow} hasOverflow={hasOverflow} gridLayout={gridLayout}>
+          <Excerpt narrow={narrow} hasOverflow={hasOverflow} gridLayout={gridLayout} title={article.excerpt}>
             {article.excerpt}
           </Excerpt>
           <MetaData>
@@ -188,7 +188,7 @@ const listTile = p => css`
   column-gap: 30px;
 
   &:not(:last-child) {
-    margin-bottom: 75px;
+    margin-bottom: 55px;
   }
 
   ${mediaqueries.desktop_medium`
@@ -300,7 +300,7 @@ const ImageContainer = styled.div<{ narrow: boolean; gridLayout: string }>`
 export const Title = styled(Headings.h3)`
   font-size: 21px;
   font-family: ${p => p.theme.fonts.serif};
-  margin-bottom: ${p => (p.hasOverflow && p.gridLayout === 'tiles' ? '35px' : '10px')};
+  margin-bottom: 10px;
   transition: color 0.3s ease-in-out;
   ${limitToTwoLines};
 
@@ -329,7 +329,8 @@ const Excerpt = styled.p<{
   font-size: 16px;
   margin-bottom: 10px;
   color: ${p => p.theme.colors.grey};
-  display: ${p => (p.hasOverflow && p.gridLayout === 'tiles' ? 'none' : 'box')};
+  display: box;
+  -webkit-line-clamp: ${p => (p.hasOverflow && p.gridLayout === 'tiles' ? '1' : '2')};
   max-width: ${p => (p.narrow ? '415px' : '515px')};
 
   ${mediaqueries.desktop`
@@ -413,7 +414,7 @@ const CardContent = styled.div`
 const HeroGridContainer = styled.div`
   display: flex;
   align-items: space-between;
-  margin-bottom: 80px;
+  margin-bottom: 50px;
 
   ${mediaqueries.tablet`
     margin-bottom: 60px;

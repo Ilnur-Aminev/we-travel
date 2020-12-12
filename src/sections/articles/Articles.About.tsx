@@ -31,7 +31,7 @@ export const ArticlesAbout: React.FC = () => {
 };
 
 const AboutSection = styled(Section)`
-  margin: 100px auto 250px;
+  margin: 100px auto 50px;
 `;
 
 const AboutText = styled.div`
