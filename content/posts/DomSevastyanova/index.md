@@ -117,7 +117,7 @@ geoUri: geo:56.83908,60.60608?z=17
 Так как дом Севастьянова находится в самом центре города Екатеринбурга, вокруг него образовался целый квартал достопримечательностей и интересных мест:
 
 <iframe src="https://www.google.com/maps/embed?pb=!4v1607351769343!6m8!1m7!1sCAoSLEFGMVFpcE45VU9DdFZZdDFkV3FLSFM5d0I3a2RVQnZOd19lakdWZ0dvV2pG!2m2!1d56.8387718!2d60.603672!3f334.1964837530296!4f0.2854723306073055!5f0.7820865974627469" width="680" height="450" frameborder="0" style="border:0;" allowfullscreen="1" aria-hidden="false" tabindex="0"></iframe>
-
+<br></br>
 <br></br>
 
 
