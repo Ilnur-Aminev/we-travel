@@ -33,7 +33,7 @@ const DarkModeToggle: React.FC<{}> = () => {
   );
 };
 
-const NavigationHeader: React.FC<{}> = () => {
+const NavigationHeader: React.FC = () => {
   const [showBackArrow, setShowBackArrow] = useState<boolean>(false);
   const [previousPath, setPreviousPath] = useState<string>('/');
 
@@ -54,8 +54,9 @@ const NavigationHeader: React.FC<{}> = () => {
   }, []);
 
   return (
-    <Section>
-      <NavContainer>
+    <NavContainer>
+      <TopWrapper>
+        <MenuButton />
         <LogoLink
           to={rootPath}
           data-a11y="false"
@@ -84,12 +85,72 @@ const NavigationHeader: React.FC<{}> = () => {
             <DarkModeToggle />
           )}
         </NavControls>
-      </NavContainer>
-    </Section>
+      </TopWrapper>
+    </NavContainer>
   );
 };
 
 export default NavigationHeader;
+
+const TopWrapper = styled.div`
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+`;
+
+const NavContainer = styled.div`
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 100;
+  padding: 5px 0;
+  /* height: 70px; */
+  background-color: ${p => p.theme.colors.background};
+  transition: ${p => p.theme.colorModeTransition};
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+
+  ${mediaqueries.desktop_medium`
+    padding-top: 50px;
+  `};
+
+  ${mediaqueries.tablet`
+    padding-top: 25px;
+  `};
+`;
+
+const MenuButton = styled.button`
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(
+    to bottom,
+    ${p => p.theme.colors.primary} 0%,
+    ${p => p.theme.colors.primary} 14.3%,
+    transparent 14.3%,
+    transparent 28.6%,
+    ${p => p.theme.colors.primary} 28.6%,
+    ${p => p.theme.colors.primary} 42.9%,
+    transparent 42.9%,
+    transparent 57.2%,
+    ${p => p.theme.colors.primary} 57.2%,
+    ${p => p.theme.colors.primary} 71.6%,
+    transparent 71.6%,
+    transparent 85.9%,
+    ${p => p.theme.colors.primary} 85.9%,
+    ${p => p.theme.colors.primary} 100%
+  );
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+`;
 
 const BackArrowIconContainer = styled.div`
   transition: 0.2s transform var(--ease-out-quad);
@@ -106,22 +167,6 @@ const BackArrowIconContainer = styled.div`
   ${mediaqueries.desktop_medium`
     display: none;
   `}
-`;
-
-const NavContainer = styled.div`
-  position: relative;
-  z-index: 100;
-  padding-top: 20px;
-  display: flex;
-  justify-content: space-between;
-
-  ${mediaqueries.desktop_medium`
-    padding-top: 50px;
-  `};
-
-  ${mediaqueries.tablet`
-    padding-top: 25px;
-  `};
 `;
 
 const LogoLink = styled(Link)<{ back: string }>`

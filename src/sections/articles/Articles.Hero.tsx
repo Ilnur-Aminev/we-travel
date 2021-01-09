@@ -26,7 +26,7 @@ export default ArticlesHero;
 const HeroImg = styled.section`
   width: 100%;
   background: url(${heroImg});
-  margin-top: 20px;
+  margin-top: 70px;
   height: 400px;
   background-size: cover;
 
