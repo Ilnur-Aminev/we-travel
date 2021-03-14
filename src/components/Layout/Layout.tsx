@@ -8,13 +8,14 @@ import NavigationHeader from '@components/Navigation/Navigation.Header';
 import ArticlesContextProvider from '../../sections/articles/Articles.List.Context';
 
 import { globalStyles } from '@styles';
+import { IAuthor } from '../../types';
 
 /**
  * <Layout /> needs to wrap every page as it provides styles, navigation,
  * and the main structure of each page. Within Layout we have the <Container />
  * which hides a lot of the mess we need to create our Desktop and Mobile experiences.
  */
-const Layout: React.FC<{}> = ({ children }) => {
+const Layout: React.FC = ({ children }) => {
   const [colorMode] = useColorMode();
 
   useEffect(() => {
@@ -26,12 +27,12 @@ const Layout: React.FC<{}> = ({ children }) => {
       <Container>
         <Global styles={globalStyles} />
         <NavigationHeader />
-        {children}
+        <ChildrenWrapper>{children}</ChildrenWrapper>
         <NavigationFooter />
       </Container>
     </ArticlesContextProvider>
   );
-}
+};
 
 export default Layout;
 
@@ -40,4 +41,8 @@ const Container = styled.div`
   background: ${p => p.theme.colors.background};
   transition: ${p => p.theme.colorModeTransition};
   min-height: 100vh;
+`;
+
+export const ChildrenWrapper = styled.div`
+  padding-top: 70px;
 `;
