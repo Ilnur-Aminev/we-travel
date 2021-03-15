@@ -21,7 +21,7 @@ export const Regions: React.FC<{ authors: IAuthor[] }> = ({ authors }) => {
             <ImageWrapper>
               <Image src={a.avatar.large} style={{ height: '200px' }} />
             </ImageWrapper>
-            <Title>{a.name}</Title>
+            <Title title={a.name}>{a.name}</Title>
             <Subtitle>{a.country}</Subtitle>
           </RegionLink>
         ))}
@@ -46,6 +46,12 @@ const Title = styled(Headings.h3)`
   font-family: ${p => p.theme.fonts.sansSerif};
   text-align: center;
   font-size: 22px;
+
+  ${mediaqueries.tablet`
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  `}
 `;
 
 const Subtitle = styled.div`
@@ -87,6 +93,10 @@ export const RegionLink = styled(Link)`
       color: ${p => p.theme.colors.accent};
     }
   }
+
+  ${mediaqueries.tablet`
+    width: calc(50% - 20px);
+  `}
 `;
 
 const AuthorLink = styled(SightName)`
