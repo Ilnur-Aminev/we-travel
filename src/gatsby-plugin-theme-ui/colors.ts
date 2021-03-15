@@ -28,7 +28,7 @@ export default {
       background: "#111216",
       hover: "rgba(255, 255, 255, 0.07)",
       gradient:
-        "linear-gradient(180deg, #111216 0%, rgba(66, 81, 98, 0.36) 100%)",
+        "linear-gradient(180deg, transparent 0%, rgba(66, 81, 98, 0.36) 100%)",
       articleText: "#fff",
       track: "rgba(255, 255, 255, 0.3)",
       progress: "#fff",

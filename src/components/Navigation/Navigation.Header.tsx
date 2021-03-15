@@ -108,7 +108,7 @@ const NavContainer = styled.div<{ isFixed?: boolean }>`
   left: 0;
   right: 0;
   top: 0;
-  z-index: 100;
+  z-index: 999;
   padding: 5px 0;
   background-color: ${p => p.theme.colors.background};
   transition: ${p => p.theme.colorModeTransition};

@@ -37,4 +37,5 @@ const AboutSection = styled(Section)`
 const AboutText = styled.div`
   margin-top: 30px;
   white-space: pre-wrap;
+  color: ${p => p.theme.colors.primary};
 `;
