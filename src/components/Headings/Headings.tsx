@@ -1,7 +1,7 @@
-import styled from "@emotion/styled";
-import { css } from "@emotion/core";
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 
-import mediaqueries from "@styles/media";
+import mediaqueries from '@styles/media';
 
 /**
  * Example:
@@ -28,6 +28,11 @@ const h1 = styled.h1`
   ${mediaqueries.phablet`
     font-size: 32px;
     line-height: 1.3;
+  `};
+
+  ${mediaqueries.tablet`
+    font-size: 24px;
+    text-align: center;
   `};
 `;
 
@@ -78,7 +83,7 @@ const h4 = styled.h4`
 `;
 
 const h5 = styled.h5`
-  word-break: keep-all;  
+  word-break: keep-all;
   font-size: 18px;
   line-height: 1.45;
   ${commonStyles};
@@ -105,5 +110,5 @@ export default {
   h3,
   h4,
   h5,
-  h6,
+  h6
 };

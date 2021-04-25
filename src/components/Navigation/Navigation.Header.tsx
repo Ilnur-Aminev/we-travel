@@ -6,7 +6,7 @@ import { Logo } from '../Logo';
 import Icons from '../../icons';
 import { media as mediaqueries } from '../../styles';
 import { getWindowDimensions, getBreakpointFromTheme } from '../../utils';
-import { Menu } from '../Menu/Menu';
+import { Menu } from '../Menu';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 
 const DarkModeToggle: React.FC = () => {
