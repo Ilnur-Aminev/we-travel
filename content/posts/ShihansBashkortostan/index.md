@@ -142,6 +142,14 @@ geoUri: geo:53.5545,56.0976?z=13
 
 До Стерлитамака можно также добраться на поезде или автобусе прямо из Уфы и затем на рейсовом автобусе или на попутках до остановки «Дом отдыха «Шиханы»». Оставшуюся часть пути придется пройти пешком или поймать попутную машину.
 
+### Индивидуальная экскурсия
+
+Еще есть вариант заказать классную экскурсию из Уфы. В рамках этой экскурсии вы посетите Юрактау и Торатау. Помимо этого побываете в Красноусольском и увидите голубое озеро-родник Зянгяр-куль.   
+
+[**Подробнее тут**](https://tp.media/r?marker=322719&trs=132658&p=652&u=https%3A%2F%2Fexperience.tripster.ru%2Fexperience%2F26228%2F)
+
+<script src="//c11.travelpayouts.com/content?promo_id=4222&shmarker=322719&trs=132658&experiences=26228&order=top&num=1&widget_template=horizontal-list&width=680&bg_color=&logo=nologonotitle&widgetbar=true&widgetbar_delay=&widgetbar_position=top&powered_by=true" charset="utf-8"></script>
+
 
 ## История и Легенды Шиханов <a name="9"></a>
 

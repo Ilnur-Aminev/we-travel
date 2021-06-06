@@ -99,9 +99,24 @@ geoUri: geo:53.0437,57.0652?z=16
  
 Все безопасно – дорожки маршрутов внутри и снаружи Каповой пещеры и обложены гравием и тротуарной плитой, проложены трапы и мостики, а также в наличии имеются урны и туалеты.
 
+
+### Экскурсии из Уфы
+Автобусные туры:
+- [**Малое ожерелье Южного Урала**, 6 дней](https://tp.media/r?marker=322719&trs=132658&p=4795&u=https%3A%2F%2Fbolshayastrana.com%2Fural%2Fhttps-tengri-ru-ecoturs-micro-bus-uraljewel-small3-17092)
+- [**Экскурсионный тур через три заповедника Урала**, 2 дня](https://tp.media/r?marker=322719&trs=132658&p=4795&u=https%3A%2F%2Fbolshayastrana.com%2Fural%2Fehkskursionnyj-tur-cherez-tri-zapovednika-urala-17072)
+- [**Башкирский Урал**, 5 дней](https://tp.media/r?marker=322719&trs=132658&p=4795&u=https%3A%2F%2Fbolshayastrana.com%2Fural%2Fbashkirskij-ural-17089)
+- [**Ожерелье Южного Урала**, 10 дней](https://tp.media/r?marker=322719&trs=132658&p=4795&u=https%3A%2F%2Fbolshayastrana.com%2Fural%2Fozherele-yuzhnogo-urala-17087)
+
+Сплав + конные эксурсии:
+- [**Сплав на катамаранах по реке Белая**, 6 дней](https://tp.media/r?marker=322719&trs=132658&p=4795&u=https%3A%2F%2Fbolshayastrana.com%2Fural%2Fsplav-na-katamaranah-po-reke-belaya-17073)
+- [**Путешествие по пещерам и горам Урала**, 10 дней](https://tp.media/r?marker=322719&trs=132658&p=4795&u=https%3A%2F%2Fbolshayastrana.com%2Fural%2Fputeshestvie-po-peshcheram-i-goram-urala-17079)
+- [**Экскурсионно-активный тур по Башкирии**, 4 дня](https://tp.media/r?marker=322719&trs=132658&p=4795&u=https%3A%2F%2Fbolshayastrana.com%2Fural%2Fehkskursionno-aktivnyj-tur-po-bashkirii-4-dnya-17076)
+
+[**И множество других экскурсий Урала**](https://tp.media/r?marker=322719&trs=132658&p=4795&u=https%3A%2F%2Fbolshayastrana.com%2Fural)
+
+
 <iframe src="https://www.google.com/maps/embed?pb=!4v1617781648276!6m8!1m7!1sCAoSLEFGMVFpcE56dTEzNHFRTkdJb3ZWaTVONEh3MDRkLU0yU3NLTXB3LTF2WlJR!2m2!1d53.04335778294229!2d57.06506961965897!3f11.910174377423399!4f4.204554201341509!5f0.7820865974627469" width="680" height="450" style="border:0;" allowfullscreen="1" loading="lazy"></iframe>
 <br></br>
-
 
 ## Туристический отдых
 
@@ -189,7 +204,7 @@ geoUri: geo:53.0437,57.0652?z=16
 
 Также можно разместится на отдаленных базах отдыха «Кашаля» и «Галиакберово», там также предоставляются беседки, костры и питьевая вода.
 
-Одна из самых близких туристических баз – это «У Каповой», далее идет «Акбузат». Условия проживания все те же, есть размещение как в домиках, так и в палаточном лагере.
+Одна из самых близких туристических баз – это «[**У Каповой**](https://tp.media/r?marker=322719&trs=132658&p=4953&u=https%3A%2F%2Fmirturbaz.ru%2Frussia%2Fbashkortostan%2Fu-kapovoy-redaktiruyu)», далее идет «Акбузат». Условия проживания все те же, есть размещение как в домиках, так и в палаточном лагере.
 
 <div class="Image__Large">
    <Image src="images/old.rinay.ru1.jpg" alt="Капова пещера, Шульган-Таш, Башкортостан"/>
