@@ -3,6 +3,8 @@ import React from 'react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 
+import { ScriptRunner } from '../ScriptRunner';
+
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { useColorMode } from 'theme-ui';
@@ -43,6 +45,7 @@ const components = {
   th: Tables.HeadCell,
   td: Tables.Cell,
   figcaption: Figcaption,
+  ScriptRunner
 };
 
 interface MDXProps {
@@ -69,7 +72,7 @@ export default MDX;
 const IMAGE_WIDTHS = {
   regular: '680px',
   large: '1004px',
-  full: '100vw',
+  full: '100vw'
 };
 
 const ARTICLE_WIDTH = css`
