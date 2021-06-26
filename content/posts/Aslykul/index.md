@@ -80,7 +80,7 @@ geoUri: geo:54.3144,54.5762?z=13
 
 ## Развлечения на территории озера Аслыкуль <a name="5"></a>
 
-<ScriptRunner script="//c11.travelpayouts.com/content?promo_id=4222&shmarker=322719&trs=132658&experiences=26228&order=top&num=1&widget_template=horizontal-list&width=680&bg_color=&logo=nologonotitle&widgetbar=true&widgetbar_delay=&widgetbar_position=top&powered_by=true"/>
+
 
 Самое излюбленное занятие на озере - рыбалка, встретить рыбаков можно в любое время, как жарким летом, так и суровой зимой. Рыба водится годная, рыбачат с лодок и прямо с берега, но опытные мастера рыбалки советуют отправляться сразу на середину озера, выбор там богаче, и рыба лучше клюет.
 

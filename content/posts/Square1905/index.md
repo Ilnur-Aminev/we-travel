@@ -144,6 +144,8 @@ geoUri: geo:56.83787,60.59719?z=18
 
 <br></br>
 
+<ScriptRunner script="//c11.travelpayouts.com/content?promo_id=4217&shmarker=322719&trs=132658&citytag=10857&order=top&num=3&widget_template=horizontal&width=80%25&bg_color=&logo=true&widgetbar=false&widgetbar_delay=&widgetbar_position=top&powered_by=true&city=%D0%95%D0%BA%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B1%D1%83%D1%80%D0%B3"/>
+
 ## Памятник В. И. Ленину
 Статуя вождю советского народа была возведена в 1957, окончательно закрепив современный облик Площади 1905 года. Монумент был сотворен руками скульптора В. И. Ингала и поставлен на место огромной статуи Сталина после развенчания культа личности последнего. Фигура Ленина, стоящая на постаменте из серого гранита, как бы «призывает» народ к революции и поднятию на бунт.
 

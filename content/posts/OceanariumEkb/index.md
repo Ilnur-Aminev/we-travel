@@ -159,6 +159,8 @@ geoUri: geo:56.79254,60.64497?z=17
 
 На территории океанариума есть парковка. Приобрести билеты можно как онлайн, так и офлайн способом.
 
+<ScriptRunner script="//c11.travelpayouts.com/content?promo_id=4217&shmarker=322719&trs=132658&citytag=10857&order=top&num=3&widget_template=horizontal&width=80%25&bg_color=&logo=true&widgetbar=false&widgetbar_delay=&widgetbar_position=top&powered_by=true&city=%D0%95%D0%BA%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B1%D1%83%D1%80%D0%B3"/>
+
 ## Интересные места рядом
 
 ### [Екатеринбургский зоопарк](https://we-travel.today/rossiya/sverdlovskaya-oblast/ekaterinburgskij-zoopark/)
