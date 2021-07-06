@@ -65,6 +65,9 @@ geoUri: geo:54.7572,56.0360?z=14
 Со вторника по пятницу аквапарк начинает работу в 12:00, а заканчивает в 20:00.
 В субботу и воскресенье график работы аквапарка с 10 утра до 22 вечера.
 
+
+<ScriptRunner script="//c11.travelpayouts.com/content?promo_id=4217&shmarker=322719.City&trs=132658&citytag=11922&order=top&num=3&widget_template=horizontal&width=80%25&bg_color=&logo=true&widgetbar=false&widgetbar_delay=&widgetbar_position=bottom&powered_by=true&city=%D0%A3%D1%84%D0%B0"/>
+
 ## Горки Аквапарка Уфы <a name="4"></a>
 
 В аквапарке целых 11 водных горок:
