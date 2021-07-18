@@ -37,19 +37,21 @@ geoUri: geo:53.0796,56.4580?z=13
 
 Нугушское водохранилище – это живописное озеро, созданное искусственным образом, «жемчужина» Башкирии, расположенная почти в самом сердце края – в национальном парке «Башкирия. Размеры водохранилища – 20 км в длину, 5 – в ширину и 15 м в глубину. Водохранилище Нугуш также называют «морем трех городов», «горной сказкой» и одним из самых завораживающих мест по всей Башкирии – с крутыми холмистыми берегами, каменистой линией берега и лесными холмами. Именно сюда стекается большое количество туристом – улицезреть истинную уральскую красоту природы.
 
-<div class="Image__Small">
+<div class="block__small">
    <Image src="images/nat-geo.ru2.jpg" alt="Нугушское водохранилище, Башкортостан"/>
    <figcaption>Источник nat-geo.ru</figcaption>
 </div>
 
 Главная «изюминка» Нугушского водохранилища – горы и скалы, окружающие его. Здесь могут найти интерес и любители природы, и туристы, желающие активно отдохнуть и позаниматься спортом, а также все те, кто приехал отдохнуть от шумного города и отправился поудить рыбу или покататься на водных аттракционах – Нугуш может предложить и незабываемые природные пейзажи, и возможность сплава по своим течениям, а также огромное разнообразие рыбы и наличие кристально чистой воды.
 
-<div class="Image__Small">
+<div class="block__small">
    <Image src="images/twimg.com2.jpg" alt="Нугушское водохранилище, Башкортостан"/>
    <figcaption>Источник twimg.com</figcaption>
 </div>
 
+<div class="block__medium">
 <ScriptRunner script="https://c169.travelpayouts.com/content?promo_id=4798&shmarker=322719.Виджет&trs=132658"/>
+</div>
 
 
 
@@ -59,7 +61,7 @@ geoUri: geo:53.0796,56.4580?z=13
 
 
 
-<div class="Image__Small">
+<div class="block__small">
    <Image src="images/twimg.com.jpg" alt="Нугушское водохранилище, Башкортостан"/>
    <figcaption>Река Нугуш. Источник twimg.com</figcaption>
 </div>
@@ -68,7 +70,7 @@ geoUri: geo:53.0796,56.4580?z=13
 
 
 
-<iframe src="https://www.google.com/maps/embed?pb=!4v1626597267099!6m8!1m7!1sCAoSLEFGMVFpcFBhdUd3Z3ZaQmdVMUJ3SUw5ZzNYempIZkdxUEpETHhoVWcwcG9O!2m2!1d53.0828769!2d56.4618924!3f196.9240526552561!4f-13.99656291566859!5f0.7820865974627469" width="680" height="450" style="border:0;" allowfullscreen="1" loading="lazy"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!4v1626597267099!6m8!1m7!1sCAoSLEFGMVFpcFBhdUd3Z3ZaQmdVMUJ3SUw5ZzNYempIZkdxUEpETHhoVWcwcG9O!2m2!1d53.0828769!2d56.4618924!3f196.9240526552561!4f-13.99656291566859!5f0.7820865974627469" width="680" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 <br></br>
 
 
@@ -86,7 +88,7 @@ geoUri: geo:53.0796,56.4580?z=13
 
 Достопримечательность находится в Мелеузовском районе Республики Башкортостан, в поселке Нугуш.
 
-<div class="Image__Small">
+<div class="block__small">
    <Image src="images/nat-geo.ru.jpg" alt="Нугушское водохранилище, Башкортостан"/>
    <figcaption>Источник nat-geo.ru</figcaption>
 </div>
@@ -97,7 +99,7 @@ geoUri: geo:53.0796,56.4580?z=13
 
 Посещать Нугушское водохранилище можно как в летнее время, так и зимой. Летом чистейшая вода в озере очень хорошо прогревается, поэтому в ней можно хорошо искупаться и воспользоваться услугой сплава по реке, а зимой озеро замерзает и превращается в плато для зимних развлечений.
 
-<div class="Image__Small">
+<div class="block__small">
    <Image src="images/oksanagimranova.wixsite.com.jpg" alt="Нугушское водохранилище, Башкортостан"/>
    <figcaption>Источник oksanagimranova.wixsite.com</figcaption>
 </div>
@@ -107,21 +109,21 @@ geoUri: geo:53.0796,56.4580?z=13
 
 Виды отдыха на Нугушском водохранилище подразделяются на летний и зимний. Летние развлечения включают в себя купание в реке, сплавы на лодках, рыбалку и катание на водных аттракционах – бананах, водных лыжах, скутерах, а также занятие виндсерфингом. Также в каменистых берегах Нугушского водохранилища проводятся летние музыкальные фестивали.
 
-<div class="Image__Small">
+<div class="block__small">
    <Image src="images/otechestvo-ufa.ru.jpg" alt="Нугушское водохранилище, Башкортостан"/>
    <figcaption>Источник otechestvo-ufa.ru</figcaption>
 </div>
 
 Близ Нугушского водохранилища каждый может насладится пешей прогулкой по двум экологическим тропам национального парка «Башкирия» – Таллы и Бейек-Тау. Первая из них начинается в селе Нугуш и поднимается на одноименную гору Таллы, на которой расположены две смотровые площадки – оттуда открывается прекрасный вид на горы и скалы. Протяжённость тропы – 3 км.
 
-<div class="Image__Small">
+<div class="block__small">
    <Image src="images/fa.ru_Sokol-scala.jpg" alt="Нугушское водохранилище, Башкортостан"/>
    <figcaption>Скала «Соколиная». Источник fa.ru</figcaption>
 </div>
 
 Тропа Бейек-Тау, в отличие от Таллы, более извилистая, начинается близ деревни Сергеевка и проходит около входа в большую пещеру. Тропа приводит на вершину горы и идет вдоль острых образований скал, откуда видны небольшие карстовые полости и живописные красоты Нугушского водохранилища. Протяжённость тропы – 4 км.
 
-<div class="Image__Small">
+<div class="block__small">
    <Image src="images/photosight.ru.jpg" alt="Нугушское водохранилище, Башкортостан"/>
    <figcaption>Скала «Соколиная». Источник photosight.ru</figcaption>
 </div>
@@ -130,7 +132,7 @@ geoUri: geo:53.0796,56.4580?z=13
 
 В зимнее время года Нугушское водохранилище преобразовывается в место катания на лыжах и зимних аттракционах, а также для подледной рыбалки.
 
-<div class="Image__Large">
+<div class="block__large">
    <Image src="images/photocentra.ru.jpg" alt="Нугушское водохранилище, Башкортостан"/>
    <figcaption>Источник photocentra.ru</figcaption>
 </div>
@@ -142,7 +144,7 @@ geoUri: geo:53.0796,56.4580?z=13
 
 Наиболее популярные турбазы – [«Родники»](https://tp.media/r?marker=322719&trs=132658&p=4953&u=https%3A%2F%2Fmirturbaz.ru%2Frussia%2Fbashkortostan%2Frodnikii), [«Лесная сказка»](https://tp.media/r?marker=322719&trs=132658&p=4953&u=https%3A%2F%2Fmirturbaz.ru%2Frussia%2Fbashkortostan%2Flesnaya-skazka-red), [«Парус»](https://tp.media/r?marker=322719&trs=132658&p=4953&u=https%3A%2F%2Fmirturbaz.ru%2Frussia%2Fbashkortostan%2Fparus-red), [«Азур»](https://tp.media/r?marker=322719&trs=132658&p=4953&u=https%3A%2F%2Fmirturbaz.ru%2Frussia%2Fbashkortostan%2Fazur), [«Солнечная»](https://tp.media/r?marker=322719&trs=132658&p=4953&u=https%3A%2F%2Fmirturbaz.ru%2Frussia%2Fbashkortostan%2Fsolnechnayaa), почти у каждой из этих баз имеется свой огороженный выход к воде, небольшие пляжи. Один из главных минусов пляжей – каменистость берега Нугуша, иногда камни попадаются настолько массивные и острые, что могут травмировать купающегося.
 
-<div class="Image__Small">
+<div class="block__small">
    <Image src="images/prigorod.info.jpg" alt="Нугушское водохранилище, Башкортостан"/>
    <figcaption>Источник prigorod.info</figcaption>
 </div>
@@ -172,7 +174,9 @@ geoUri: geo:53.0796,56.4580?z=13
 - Из Перми: обогнуть Уфу, проехав несколько деревень (Чернушка и тд.), далее – по трассе на Оренбург и до Нугуша;
 - Из Челябинска: доехать по трассе М5 до Уфы, после свернуть на Оренбург, далее – до Нугуша через Мелеуз. 650 км.
 
+<div class="block__medium">
 <ScriptRunner script="https://c75.travelpayouts.com/content?promo_id=1752&shmarker=322719&trs=132658&origin=%D0%A3%D1%84%D0%B0&destination=%D0%9D%D1%83%D0%B3%D1%83%D1%88&powered_by=true"/>
+</div>
 
 
 

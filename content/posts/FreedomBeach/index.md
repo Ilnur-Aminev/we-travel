@@ -38,7 +38,7 @@ geoUri: geo:7.87445,98.27539?z=17
 Раньше пляж был платным, но сейчас вход стал бесплатным.
 Из развлечений тут только дайвинг, снорклинг и пляжные игры.
 
-<div class="Image__Large">
+<div class="block__large">
    <Image src="images/eugeneRudih.jpg" alt="Freedom Beach Пляж Фридом"/>
    <figcaption>Фото Евгений Рудых</figcaption>
 </div>

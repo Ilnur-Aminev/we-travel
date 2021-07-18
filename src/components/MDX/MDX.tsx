@@ -232,7 +232,7 @@ const ImageCSS = css`
     `};
   }
 
-  div.Image__Small {
+  div.block__small {
     display: flex;
     flex-direction: column;
     position: relative;
@@ -270,7 +270,7 @@ const ImageCSS = css`
     box-shadow: 0px 15px 60px rgba(0, 0, 0, 0.15);
   }
 
-  div.Image__Medium {
+  div.block__medium {
     position: relative;
     margin: 15px auto 50px;
     width: 100%;
@@ -295,10 +295,10 @@ const ImageCSS = css`
     `};
   }
 
-  div.Image__Large {
+  div.block__large {
     position: relative;
     left: -68px;
-    width: ${IMAGE_WIDTHS.full};
+    width: calc(${IMAGE_WIDTHS.full} - 17px);
     margin: 25px auto 60px;
     pointer-events: none;
 
