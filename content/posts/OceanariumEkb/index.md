@@ -43,7 +43,7 @@ geoUri: geo:56.79254,60.64497?z=17
 Ежедневно в самом большом океанариуме Урала проводятся захватывающие мероприятия: тематические квесты для юных посетителей, морские экспозиции с различными обитателями океанариума, близкое «общение» с дельфинами и белыми китами и яркие шоу-представления, которые обязательно понравятся как малышам, так и шумным компаниям.
 
 <div class="block__small">
-   <Image src="images/vk.com:oceanariumekb2.jpg" alt="Океанариум Екатеринбкрга, Дельфинарий"/>
+   <Image src="images/vk.com_oceanariumekb2.jpg" alt="Океанариум Екатеринбкрга, Дельфинарий"/>
    <figcaption>Источник vk.com/oceanariumekb</figcaption>
 </div>
 
@@ -51,6 +51,10 @@ geoUri: geo:56.79254,60.64497?z=17
 
 Больше интересной информации можно найти на [официальном сайте](https://oceanarium-ekb.ru/), там же можно приобрести билеты.
 
+
+<div class="block__medium">
+<ScriptRunner script="https://tp.media/content?promo_id=2719&shmarker=322719&locale=ru&campaign_id=99&powered_by=true&border_radius=17&plain=false&color_background=%23FFFFFF&color_border=%23DDDDDD&color_button=%23F51449&color_icons=%23F51449&default_direction=%D0%95%D0%BA%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B1%D1%83%D1%80%D0%B3"/>
+</div>
 
 ## Развлечения и шоу Океанариума
 
@@ -79,7 +83,7 @@ geoUri: geo:56.79254,60.64497?z=17
 Шоу дельфинов, белых китов и морских котиков – самое знаменитое и популярное развлечение Екатеринбургского океанариума. Необычно представление тем, что выступают здесь не только дельфины, но и другие морские млекопитающие – белухи, морские львы и котики.
 
 <div class="block__small">
-   <Image src="images/vk.com:oceanariumekb.jpg" alt="Океанариум Екатеринбкрга, Дельфинарий"/>
+   <Image src="images/vk.com_oceanariumekb.jpg" alt="Океанариум Екатеринбкрга, Дельфинарий"/>
    <figcaption>Белый кит в Дельфинарии. Источник vk.com/oceanariumekb</figcaption>
 </div>
 
@@ -131,7 +135,7 @@ geoUri: geo:56.79254,60.64497?z=17
 Всего в океанариуме представлено более 3 тыс. экземпляров и 200 видов различной морской, наземной и мелкой живности. Сюда входят рыбы-лисицы, рыбы-бабочки, мурены, скаты-химантура и белоперые акулы.
 
 <div class="block__small">
-   <Image src="images/vk.com:oceanariumekb1.jpg" alt="Океанариум Екатеринбкрга, Дельфинарий"/>
+   <Image src="images/vk.com_oceanariumekb1.jpg" alt="Океанариум Екатеринбкрга, Дельфинарий"/>
    <figcaption>Нильский крокодил. Источник vk.com/oceanariumekb</figcaption>
 </div>
 

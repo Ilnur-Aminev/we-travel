@@ -50,6 +50,10 @@ geoUri: geo:56.83908,60.60608?z=17
    <Image src="images/dom-sevastianova2.5.jpg" alt="Дом Севастьянова Екатеринбург"/>
 </div>
 
+<div class="block__medium">
+<ScriptRunner script="//c11.travelpayouts.com/content?promo_id=4217&shmarker=322719&trs=132658&citytag=10857&order=top&num=3&widget_template=horizontal&width=80%25&bg_color=&logo=true&widgetbar=false&widgetbar_delay=&widgetbar_position=top&powered_by=true&city=%D0%95%D0%BA%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B1%D1%83%D1%80%D0%B3"/>
+</div>
+
 
 ## История дома
 История дома Севастьянова берет начала с первого упоминания в начале 19 века в местных газетах как «дом на берегу реки с угловой ротондой». Последующий владелец дома, дворянин Николай Иванович Севастьянов, хотел иметь настолько яркий дом в округе, чтобы пленить взгляды горожан и быть центром внимания. Дом возводился в стиле классицизма, но с непривычной для уральской столицы угловой ротондой, поэтому Севастьянов решает реконструировать здание – на дом наносится фасадная декорация в неоготическом стиле и элементами стиля барокко. Новый стиль дома не остается незамеченным – почти сразу же о нем начинают говорить как об эксцентричном и не имеющем аналога проекте на Урале, особенно выделяя трехъярусную ажурную лоджию, просторные залы в стиле эпохи Возрождения, мраморные каминные печи. К сожалению, это эклиптическое чудо недолго радовало своего хозяина. В 1874 году дом был продан государству и перешел во владение Окружного суда, новый архитектор внес свои изменения и задал городскую тенденцию к строительству неоготики.
@@ -111,8 +115,9 @@ geoUri: geo:56.83908,60.60608?z=17
 - Автобусы и маршрутки (ост. Площадь труда): №018, 19, 21, 27, 28, 32, 50, 54, 57, 57а;
 - Трамваи (ост. Театр Музкомедии): № 2, 6, 13, 15, 18, 23, 26, 32.
 
+
 <div class="block__medium">
-<ScriptRunner script="//c11.travelpayouts.com/content?promo_id=4217&shmarker=322719&trs=132658&citytag=10857&order=top&num=3&widget_template=horizontal&width=80%25&bg_color=&logo=true&widgetbar=false&widgetbar_delay=&widgetbar_position=top&powered_by=true&city=%D0%95%D0%BA%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B1%D1%83%D1%80%D0%B3"/>
+<ScriptRunner script="https://tp.media/content?promo_id=2719&shmarker=322719&locale=ru&campaign_id=99&powered_by=true&border_radius=17&plain=false&color_background=%23FFFFFF&color_border=%23DDDDDD&color_button=%23F51449&color_icons=%23F51449&default_direction=%D0%95%D0%BA%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B1%D1%83%D1%80%D0%B3"/>
 </div>
 
 

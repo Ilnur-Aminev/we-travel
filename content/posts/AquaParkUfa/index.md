@@ -47,6 +47,12 @@ geoUri: geo:54.7572,56.0360?z=14
    <figcaption>Детские горки «Гнездо». Источник аквауфа.рф</figcaption>
 </div>
 
+
+
+<div class="block__medium">
+<ScriptRunner script="https://tp.media/content?promo_id=2719&shmarker=322719&locale=ru&campaign_id=99&powered_by=true&border_radius=17&plain=false&color_background=%23FFFFFF&color_border=%23DDDDDD&color_button=%23F51449&color_icons=%23F51449&default_direction=%D0%A3%D1%84%D0%B0"/>
+</div>
+
 ## Цены Аквапарка Уфы 2021 <a name="2"></a>
 
 В аквапарке действуют разные тарифы на посещение:
