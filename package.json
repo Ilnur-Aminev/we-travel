@@ -17,6 +17,7 @@
     "@mdx-js/mdx": "^1.1.0",
     "@mdx-js/react": "^1.0.27",
     "@raae/gatsby-remark-oembed": "^0.1.1",
+    "@react-leaflet/core": "1.0.2",
     "adm-zip": "^0.4.13",
     "babel-plugin-emotion": "^10.0.14",
     "contentful-cli": "^0.36.0",
@@ -55,7 +56,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
-    "react-leaflet": "^3.0.0",
+    "react-leaflet": "3.1.0",
     "react-live": "^2.2.3",
     "react-medium-image-zoom": "^4.0.2",
     "react-outside-click-handler": "^1.2.4",
@@ -72,5 +73,10 @@
     "cross-env": "^7.0.2",
     "gatsby-plugin-force-trailing-slashes": "^1.0.4",
     "gh-pages": "^3.1.0"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ]
 }
