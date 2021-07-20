@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import styled from '@emotion/styled'
 
 import Headings from '../../components/Headings';
 import Image, { ImagePlaceholder } from '../../components/Image';

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import styled from '@emotion/styled'
 import Section from '../../components/Section';
 import mediaqueries from '../../styles/media';
 import { IAuthor } from '../../types';

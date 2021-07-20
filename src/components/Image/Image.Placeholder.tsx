@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 import mediaqueries from "@styles/media";
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { Global } from '@emotion/core';
-import styled from '@emotion/styled';
+import { Global } from '@emotion/react';
+import styled from '@emotion/styled'
 import { useColorMode } from 'theme-ui';
 
 import NavigationFooter from '@components/Navigation/Navigation.Footer';

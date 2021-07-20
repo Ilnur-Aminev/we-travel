@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import styled from '@emotion/styled'
 import Section from '../../components/Section';
 import { SectionHeader } from './Articles.Hero';
 import { graphql, useStaticQuery } from 'gatsby';

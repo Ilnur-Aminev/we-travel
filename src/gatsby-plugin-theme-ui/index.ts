@@ -23,16 +23,16 @@ export const Sizes: Record<BreakPoints, number> = {
   [BreakPoints.desktopLarge]: 1440
 };
 
-const breakpoints = Object.keys(Sizes).map(ok => [ok, Sizes[ok]]);
+export const breakpoints = Object.keys(Sizes).map(ok => [ok, Sizes[ok]]);
 
-const fonts = {
-  serif: "'Merriweather', Georgia, Serif",
+export const fonts = {
+  serif: "'Merriweather', Georgia, Serif" as const,
   sansSerif:
-    "'SF Pro Display', '-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'Helvetica Neue', 'Helvetica', 'Ubuntu', 'Roboto', 'Noto', 'Segoe UI', 'Arial', sans-serif",
-  monospace: `"Operator Mono", Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace`
+    "'SF Pro Display', '-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'Helvetica Neue', 'Helvetica', 'Ubuntu', 'Roboto', 'Noto', 'Segoe UI', 'Arial', sans-serif" as const,
+  monospace: `"Operator Mono", Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace` as const
 };
 
-const colorModeTransition = 'background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad)';
+export const colorModeTransition = 'background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad)' as const;
 
 export default merge({
   initialColorMode: 'light',

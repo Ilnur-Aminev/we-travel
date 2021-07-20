@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from '@emotion/styled'
 import { getSightColor } from '../../helpers/helpers';
 import mediaqueries from '../../styles/media';
 import { SightColor } from '../../types';

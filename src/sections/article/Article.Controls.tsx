@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 import { useColorMode } from "theme-ui";
 
 import mediaqueries from "@styles/media";

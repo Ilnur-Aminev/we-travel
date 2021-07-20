@@ -5,8 +5,8 @@ import { MDXProvider } from '@mdx-js/react';
 
 import { ScriptRunner } from '../ScriptRunner';
 
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import styled from '@emotion/styled'
+import { css } from '@emotion/react';
 import { useColorMode } from 'theme-ui';
 
 import Anchor from '@components/Anchor';

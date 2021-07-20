@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import styled from '@emotion/styled'
 import { graphql, useStaticQuery } from 'gatsby';
 
 import Section from '../Section';

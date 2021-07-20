@@ -1,8 +1,8 @@
-import styled from '@emotion/styled';
+import styled from '@emotion/styled'
 import mediaqueries from '../../styles/media';
 import Image from '@components/Image';
 import { Link } from 'gatsby';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 const getHamburgerBg = color => {
   return `linear-gradient(
