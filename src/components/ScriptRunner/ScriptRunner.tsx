@@ -15,7 +15,7 @@ export const ScriptRunner: React.FC<Props> = ({ script: src }) => {
     container.current?.appendChild(script);
 
     return () => {
-      container.current?.removeChild(script);
+      script.remove()
     };
   }, []);
 
