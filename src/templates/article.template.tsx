@@ -65,8 +65,9 @@ const Article: ArticleTemplate = ({ pageContext, location }) => {
 
 
   const anchors = article.body.match(/mdx\("h2", {\s{1,}"id": ".{1,}"\s{1,}}, ".{1,}\)/gm)?.map((item) => {
-      return{
-        title: decodeURI(unescapeUnicode(item.match(/("\\u.+?")/)?.[0]?.slice(1, -1)?.replaceAll(/\\/g, '\u005C') as string)),
+      const unicodeTitle = item.match(/("\\u.+?")/)?.[0]?.slice(1, -1)
+      return {
+        title: unicodeTitle && decodeURI(unescapeUnicode(unicodeTitle.replace(/\\/g, '\u005C') as string)),
         url: item.match(/"id": "(.{1,})"/)?.[1]
     }
   })

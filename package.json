@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "npm run dev",
-    "build": "cross-env gatsby build ROBOTS_ENV=development",
+    "build": "cross-env ROBOTS_ENV=production gatsby build",
     "dev": "gatsby develop",
     "clean": "gatsby clean",
     "deploy": "cross-env ROBOTS_ENV=production gatsby build && gh-pages -d public -b master --no-history"
