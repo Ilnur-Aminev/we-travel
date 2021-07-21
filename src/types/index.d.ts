@@ -51,6 +51,9 @@ export interface IArticle {
   body: string;
   id: string;
   geoUri: string;
+  visitTime: string;
+  ageLimit?: string;
+  price: string;
   hero: {
     full: IGatsbyImageFluid;
     preview: IGatsbyImageFluid;

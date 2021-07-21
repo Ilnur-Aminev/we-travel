@@ -49,7 +49,7 @@ const components = {
 };
 
 interface MDXProps {
-  content: React.ReactNode;
+  content: string;
 }
 
 const MDX: React.FC<MDXProps> = ({ content, children, ...props }) => {

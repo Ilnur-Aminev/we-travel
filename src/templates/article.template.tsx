@@ -6,6 +6,7 @@ import Layout from '../components/Layout';
 import MDXRenderer from '../components/MDX';
 import Progress from '../components/Progress';
 import Section from '../components/Section';
+import Headings from '../components/Headings';
 
 import mediaqueries from '../styles/media';
 import { debounce } from '../utils';
@@ -17,6 +18,9 @@ import ArticleSEO from '../sections/article/Article.SEO';
 
 import { ArticleTemplate } from '../types';
 import { ArticleMap } from '../sections/article/Article.Map';
+import ArticleTitleList from '@components/ArticleTitleList/ArticleTitleList';
+import { unescapeUnicode } from '../helpers/helpers'
+import Paragraph from '@components/Paragraph';
 
 const Article: ArticleTemplate = ({ pageContext, location }) => {
   const contentSectionRef = useRef<HTMLElement>(null);
@@ -59,6 +63,16 @@ const Article: ArticleTemplate = ({ pageContext, location }) => {
     return () => window.removeEventListener('resize', calculateBodySize);
   }, []);
 
+
+  const anchors = article.body.match(/mdx\("h2", {\s{1,}"id": ".{1,}"\s{1,}}, ".{1,}\)/gm)?.map((item) => {
+    console.log(item)
+      return{
+        title: decodeURI(unescapeUnicode(item.match(/("\\u.+?")/)?.[0].slice(1, -1).replaceAll(/\\/g, '\u005C') as string)),
+        url: item.match(/"id": "(.{1,})"/)?.[1]
+    }
+  })
+  
+  // TODO найти или сделать компонент для показа времени и цены
   return (
     <Layout>
       <ArticleSEO article={article} author={article.author} location={location} />
@@ -67,6 +81,26 @@ const Article: ArticleTemplate = ({ pageContext, location }) => {
         <Progress contentHeight={contentHeight} />
       </ArticleAside>
       <ArticleBody ref={contentSectionRef}>
+        {article.visitTime && (
+          <Paragraph>
+            <div>Когда можно посетить:</div>
+            <strong>{article.visitTime}</strong>
+          </Paragraph>
+        )}
+        {article.price && (
+          <Paragraph>
+            <div>Цена:</div>
+            <strong>{article.price}</strong>
+          </Paragraph>
+        )}
+        {article.ageLimit && (
+          <Paragraph>
+            <div>Возрастное ограничение:</div>
+            <strong>{article.ageLimit}</strong>
+          </Paragraph>
+        )}
+        <ArticleAnchorsTitle>Содержание</ArticleAnchorsTitle>
+        <ArticleTitleList items={anchors} />
         <MDXRenderer content={article.body} />
       </ArticleBody>
       <ArticleMap
@@ -123,6 +157,11 @@ const NextArticle = styled(Section)`
   display: block;
 `;
 
+const ArticleAnchorsTitle = styled(Headings.h2)`
+  max-width: 680px;
+  margin: 60px auto 18px;
+`;
+
 const FooterNext = styled.div`
   opacity: 0.25;
   margin-bottom: 100px;
@@ -153,3 +192,4 @@ const FooterNextTitle = styled.span`
 const FooterSpacer = styled.div`
   margin-bottom: 65px;
 `;
+

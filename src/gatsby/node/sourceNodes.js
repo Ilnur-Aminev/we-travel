@@ -15,6 +15,9 @@ module.exports = ({ actions }) => {
       seoDescription: String
       seoTitle: String
       geoUri: String
+      price: String
+      ageLimit: String
+      visitTime: String
     }
   `);
 };

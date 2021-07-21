@@ -30,3 +30,9 @@ export function getSightIcon(type: SightType): string {
       return '|';
   }
 }
+
+export function unescapeUnicode(str) {
+  return str.replace( /\\u([a-fA-F0-9]{4})/g, function(g, m1) {
+       return String.fromCharCode(parseInt(m1, 16));
+  });
+}

@@ -25,6 +25,9 @@ module.exports = {
           title
           seoTitle
           geoUri
+          price
+          visitTime
+          ageLimit
           seoDescription
           author
           date(formatString: "MMMM Do, YYYY")
