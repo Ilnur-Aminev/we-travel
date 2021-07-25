@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://we-travel.today/sitemap.xml
+Host: https://we-travel.today
